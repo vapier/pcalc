@@ -1,0 +1,46 @@
+// Pcalc calculator test script:
+                               // empty lines ignored
+
+echo "SIN:"		       // builtin command to print to output
+x = PI/2
+a = sin(x+1)
+a
+
+a = sin x+1 
+a                              // terminal expression prints variable
+
+b = cos(x)
+b
+
+echo "PI/2"
+x 
+
+echo "Undefined:"
+c                               // undefined vars are 0
+
+echo "Exponential:"
+
+wun = a^2 + b^2
+wun                             // variable
+
+echo "Constant:"
+E                               // constant
+PI
+echo "Log 'E' "             
+log(E)
+
+echo "LOG:"
+log(10)
+log10(E)
+
+one = log(10) * log10(E)
+one
+
+echo "Fahrenheit to celsius: 80F"
+
+f2c 80
+
+
+
+
+

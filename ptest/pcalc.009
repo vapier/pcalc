@@ -1,0 +1,9 @@
+// pcalc calculator test script:
+// escape sequences:
+
+aa = 99
+
+$aa = "WEEEE"
+
+echo "a \t a \t b \t c \n"
+echo $aa
