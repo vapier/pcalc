@@ -1,0 +1,38 @@
+// pcalc calculator test script:
+// escape sequences:
+
+aa = 99
+
+echo ""
+echo "Hello world1 with 2 newlines.\n\n"
+echo "Hello world2 with tabs a\tb\tc\td\te"
+echo ""
+
+echo ""
+echo "Number is displayed normally:"
+echo ""
+
+aa
+
+echo ""
+echo "Number is displayed as DEC, HEX, BIN:\n"
+
+
+DEC = 1
+
+_echo "Number: \t" aa
+echo " \t\tis displayed in line as decimal."
+
+DEC = 2
+
+_echo "Number: \t" aa
+echo " \t\tis displayed in line as hex."
+
+DEC = 3
+
+_echo "Number: \t" aa
+echo " \tis displayed in line as binary."
+
+DEC = 0
+
+

@@ -1,0 +1,25 @@
+//
+// pcalc calculator test script:
+//
+
+DEC = 1
+
+echo "/*                         "
+echo " * Build version number:   "
+echo " */                        "
+echo ""
+
+RESTORE buildnum
+
+_echo "#define VERSION "
+
+buildnum
+
+buildnum = buildnum+ 1
+
+STORE buildnum
+
+echo ""
+
+
+

@@ -1,0 +1,17 @@
+// pcalc calculator test script:
+// store:
+
+DEBUG = 0
+
+RESTORE aa
+RESTORE bb FROM "test.var"
+
+aa = aa + 2
+bb = bb * 2 + 1
+
+aa
+bb
+
+STORE aa
+STORE bb TO "test.var"
+

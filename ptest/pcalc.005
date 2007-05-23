@@ -1,0 +1,10 @@
+// pcalc calculator test script:
+
+DEC = 1
+
+_echo "Summing up: "
+10 * 12 +
+12 * 9.99 +
+322+
+35
+echo " Done"

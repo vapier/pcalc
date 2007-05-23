@@ -1,0 +1,39 @@
+// pcalc calculator test script:
+// echo
+
+aa = 99
+
+echo ""
+echo "hello world1"
+echo "hello world2"
+echo ""
+
+DEC = 1
+
+_echo "Number: " aa
+
+echo " is displayed in line as decimal"
+
+DEC = 2
+
+_echo "Number: " aa
+echo " is displayed in line as hex"
+
+DEC = 3
+
+_echo "Number: " aa
+
+echo " is displayed in line as binary"
+
+DEC = 0
+
+echo ""
+echo "Number is displayed normally"
+echo ""
+aa
+
+
+
+
+
+
