@@ -140,13 +140,6 @@ jmp_buf begin ;
 int     (*ptr_getchar)();
 int     (*ptr_ungetc)();
 
-FILE    *in_fp = NULL;
-
-int     len;
-char    buff[512];
-
-FILE    *in_fp;
-
 int     main(int argc, char *argv[])
 
 {
@@ -201,9 +194,17 @@ int     main(int argc, char *argv[])
         char    *commandline;
         int     len, cnt;
         int     tmpfile;
+        char    buff[512];
 
+        len = 0;
         for(cnt = args+1; cnt < argc; cnt++)
             {
+            len += strlen(argv[cnt]) + 1;
+            if (len >= sizeof(buff))
+                {
+                fprintf(stderr, "Input is too long (max of %lu chars allowed)\n", (unsigned long)sizeof(buff));
+                exit(1);
+                }
             strcat(buff, argv[cnt]); strcat(buff, " ");
             }
 
