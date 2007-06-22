@@ -28,6 +28,7 @@
 
 /* -------- Includes:  --------------------------------------------------- */
 
+#include "convert.h"
 #include "hocdecl.h"
 #include "str.h"
 

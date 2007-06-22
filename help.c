@@ -18,17 +18,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-
-/* -------- Includes:  --------------------------------------------------- */
-
-int     help_help(void);
-
-/* -------- Strings: ----------------------------------------------------- */
-
+#include "help.h"
 
 /* -------- Implementation: ---------------------------------------------- */
 
-int     basehelp(void)
+void    basehelp(void)
 
 {
 
@@ -48,7 +42,7 @@ Constants: (case sensitive)\n\
     help_help();
 }
 
-int     funchelp(void)
+void    funchelp(void)
 
 {
         printf("\
@@ -73,7 +67,7 @@ Functions: (case insensitive)\n\
 
 }
 
-int     ophelp(void)
+void    ophelp(void)
 
 {
         printf("\
@@ -92,7 +86,7 @@ Operator priorities:\n\
 
 }
 
-int     conshelp(void)
+void    conshelp(void)
 
 {
         printf("\
@@ -110,7 +104,7 @@ Constants:\n\
 }
 
 
-int     cbhelp(void)
+void    cbhelp(void)
 
 {
         printf("\
@@ -134,7 +128,7 @@ Built in variables:\n\
 }
 
 
-int     help_help(void)
+void    help_help(void)
 
 {
 

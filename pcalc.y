@@ -26,6 +26,7 @@
 #include <memory.h>                           
 #include <signal.h>
 #include <setjmp.h>
+#include <unistd.h>
 
 #include "hocdecl.h"             /* data declarations, function prototypes */
 #include "symbol.h"
@@ -129,6 +130,8 @@ str:     STR                    { }
 
 %%
 
+int parse_comline(int argc, char *argv[]);
+
 char *progname ;
 int lineno = 1;
 jmp_buf begin ;
@@ -147,7 +150,6 @@ int     main(int argc, char *argv[])
     char    template_local[] = "pcalc.tmp.XXXXXX",
             template_global[] = "/tmp/pcalc.tmp.XXXXXX",
             *template;
-    char    *env;
 
     args = parse_comline(argc, argv);
 
@@ -191,7 +193,6 @@ int     main(int argc, char *argv[])
         {
         // we got command line, write to a file, fake file:
 
-        char    *commandline;
         int     len, cnt;
         int     tmpfile;
         char    buff[512];
@@ -298,7 +299,6 @@ int     parse_comline(int argc, char *argv[])
 
 {
     int i, j = 0;
-    char *ptr;
 
     for(i=1; i < argc; ++i)
         {
