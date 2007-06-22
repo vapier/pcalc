@@ -33,7 +33,7 @@ Functions:\n\
     F2C   C2F   IN2MM  MM2IN  PO2KG   KG2PO\n\
 \n\
 Operators:\n\
-    '+' '-' '*' '/' '%' '^'\n\
+    '+' '-' '*' '/' '%%' '^'\n\
 \n\
 Constants: (case sensitive)\n\
         PI      E     GAMMA   DEG     PHI   \n\
@@ -79,7 +79,7 @@ Operator priorities:\n\
     left   assotiation:     and         BINARY AND\n\
     left   assotiation:     '<' '>'     BINARY LEFT/RIGHT SHIFT\n\
     left   assotiation:     '+' '-'     ADDITION/SUBTRUCTION\n\
-    left   assotiation:     '*' '/' '%' MULTIPLY/DIVIDE\n\
+    left   assotiation:     '*' '/' '%%' MULTIPLY/DIVIDE\n\
     left   assotiation:     '-'         UNARY MINUS\n\
     right  assotiation:     '^'         EXPONENTATION\n\
 \n\
