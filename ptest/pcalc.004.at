@@ -1,0 +1,18 @@
+AT_SETUP(004)
+
+AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.004], [0], [dnl
+	1       	0x1       	0y1
+	2       	0x2       	0y10
+	3       	0x3       	0y11
+	4       	0x4       	0y100
+	0.5     	0x0       	0y0
+	6.6     	0x6       	0y110
+	7.7     	0x7       	0y111
+	880     	0x370     	0y1101110000
+	900     	0x384     	0y1110000100
+	10      	0xa       	0y1010
+	39      	0x27      	0y100111
+	72      	0x48      	0y1001000
+])
+
+AT_CLEANUP

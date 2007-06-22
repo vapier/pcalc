@@ -17,5 +17,3 @@ aa = aa + 1
 STORE aa
 
 echo ""
-
-

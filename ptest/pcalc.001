@@ -6,14 +6,14 @@ x = PI/2
 a = sin(x+1)
 a
 
-a = sin x+1 
+a = sin x+1
 a                              // terminal expression prints variable
 
 b = cos(x)
 b
 
 echo "PI/2"
-x 
+x
 
 echo "Undefined:"
 c                               // undefined vars are 0
@@ -26,7 +26,7 @@ wun                             // variable
 echo "Constant:"
 E                               // constant
 PI
-echo "Log 'E' "             
+echo "Log 'E'"
 log(E)
 
 echo "LOG:"
@@ -39,8 +39,3 @@ one
 echo "Fahrenheit to celsius: 80F"
 
 f2c 80
-
-
-
-
-

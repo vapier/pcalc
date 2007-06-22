@@ -1,0 +1,15 @@
+AT_INIT
+
+m4_include(pcalc.001.at)
+m4_include(pcalc.002.at)
+m4_include(pcalc.003.at)
+m4_include(pcalc.004.at)
+m4_include(pcalc.005.at)
+m4_include(pcalc.006.at)
+m4_include(pcalc.007.at)
+m4_include(pcalc.008.at)
+m4_include(pcalc.009.at)
+
+dnl the output of these differ based on compile information
+dnl m4_include(pcalc.010.at)
+dnl m4_include(pcalc.011.at)

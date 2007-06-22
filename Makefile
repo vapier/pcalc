@@ -35,17 +35,7 @@ distclean: clean
 	rm -f pcalc.tab.c lexyy.c pcalcl.c pcalc.c pcalc.h
 
 check test: pcalc
-	mv -f pcalc.var pcalc.old; rm -f *.var 
-	./pcalc @ptest/pcalc.001 > testdata
-	./pcalc @ptest/pcalc.002 >>testdata
-	./pcalc @ptest/pcalc.003 >>testdata
-	./pcalc @ptest/pcalc.004 >>testdata
-	./pcalc @ptest/pcalc.005 >>testdata
-	./pcalc @ptest/pcalc.006 >>testdata
-	./pcalc @ptest/pcalc.007 >>testdata
-	./pcalc @ptest/pcalc.008 >>testdata
-	./pcalc @ptest/pcalc.009 >>testdata
-	@diff testdata testorig
+	$(MAKE) -C ptest check
 
 INSTALL = install
 BINDIR  = /usr/bin
@@ -58,6 +48,7 @@ dist pack: distclean
 	svn export . pcalc-$(VERSION)
 	svn log -v -r 1:HEAD > pcalc-$(VERSION)/ChangeLog
 	$(MAKE) -C pcalc-$(VERSION) pcalc.c pcalcl.c
+	$(MAKE) -C pcalc-$(VERSION)/test testsuite
 	tar jcf pcalc-$(VERSION).tar.bz2 pcalc-$(VERSION)
 	rm -rf pcalc-$(VERSION)
 

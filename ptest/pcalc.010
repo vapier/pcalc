@@ -20,6 +20,3 @@ buildnum = buildnum+ 1
 STORE buildnum
 
 echo ""
-
-
-
