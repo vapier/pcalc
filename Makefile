@@ -4,65 +4,37 @@
 # Makefile for Linux. Please let me know if you port pcalc.
 #
 
-#CFLAGS      	= -ggdb
-#CC             = $(MSC) $(CFLAGS) $(INCL)
-CC              = cc 
-YACC            = bison -ld
-LEX             = flex
+VERSION = 1.1
 
-OS0        	= pcalc
-OS1           	= pcalcl
-OS2           	= funct
-OS3           	= math
-OS4           	= symbol
-OS5           	= help
-OS6           	= store
-OS7           	= print
-OS8           	= str
-OS9           	= convert
+CC   ?= cc
+YACC  = bison -ld
+LEX   = flex
 
-OB0            	= $(OS0).o
-OB1            	= $(OS1).o
-OB2            	= $(OS2).o
-OB3            	= $(OS3).o
-OB4            	= $(OS4).o
-OB5            	= $(OS5).o
-OB6            	= $(OS6).o
-OB7            	= $(OS7).o
-OB8            	= $(OS8).o
-OB9            	= $(OS9).o
+CFLAGS   ?= -ggdb
+CFLAGS   += -Wall
+CPPFLAGS += -DVERSION='"$(VERSION)"'
+LDLIBS   += -lm -lfl
 
-# Our target:
+SRCS = pcalc pcalcl funct math symbol help store print str convert
+OBJS = $(patsubst %,%.o,$(SRCS))
 
-pcalc:  $(OB0) $(OB1) $(OB2) $(OB3) $(OB4) $(OB5) $(OB6) $(OB7) $(OB8) $(OB9)
-	$(CC) $(CFLAGS) $(OB0) $(OB1) $(OB2) $(OB3) $(OB4) $(OB5) $(OB6) $(OB7) $(OB8) $(OB9) -o pcalc -lm -lfl
+all: pcalc
+
+pcalc: $(OBJS)
 
 pcalc.c: pcalc.y
-	$(YACC) pcalc.y -o pcalc.c
+	$(YACC) -o $@ $<
 
-pcalcl.o: pcalcl.l
-	$(LEX) -opcalcl.c pcalcl.l 
-	$(CC) $(CFLAGS) -c pcalcl.c -o pcalcl.o
-
-# Just a standard clean
+pcalcl.c: pcalcl.l
+	$(LEX) -o $@ $<
 
 clean:
-	rm -f *.o
-	rm -f *~
-	rm -f *.var
-	rm -f ptest/*~
-	rm -f core
-	rm -f y.output
+	rm -f *.o *~ *.var ptest/*~ core y.output
 
-# Force LEX and YACC rebuild
+distclean: clean
+	rm -f pcalc.tab.c lexyy.c
 
-yacclean: clean
-	rm -f pcalc.tab.c
-	rm -f lexyy.c
-
-# Rudimentary test, for good measure
-
-test: 
+check test: pcalc
 	mv -f pcalc.var pcalc.old; rm -f *.var 
 	./pcalc @ptest/pcalc.001 > testdata
 	./pcalc @ptest/pcalc.002 >>testdata
@@ -75,11 +47,23 @@ test:
 	./pcalc @ptest/pcalc.009 >>testdata
 	@diff testdata testorig
 
+INSTALL = install
+BINDIR  = /usr/bin
+DESTDIR = 
 install:
-	install pcalc /usr/bin
+	$(INSTALL) -m 755 -D pcalc $(DESTDIR)$(BINDIR)/pcalc
 
-# Pack up for distribution:
+dist pack: distclean
+	rm -rf pcalc-$(VERSION)
+	svn export . pcalc-$(VERSION)
+	svn log -v -r 1:HEAD > pcalc-$(VERSION)/ChangeLog
+	$(MAKE) -C pcalc-$(VERSION) pcalc.c pcalcl.c
+	tar jcf pcalc-$(VERSION).tar.bz2 pcalc-$(VERSION)
+	rm -rf pcalc-$(VERSION)
 
-pack:	clean
-	./pack
+distcheck: dist
+	tar jxf pcalc-$(VERSION).tar.bz2
+	$(MAKE) -C pcalc-$(VERSION) all check
+	rm -rf pcalc-$(VERSION)
 
+.PHONY: all check clean dist distcheck distclean install pack test

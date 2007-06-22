@@ -155,7 +155,7 @@ int     main(int argc, char *argv[])
 
     if(!argv[1])
         {
-        printf ("\nProgrammer's calculator by Peter Glen. Version 1.0\n\n");
+        printf ("\nProgrammer's calculator by Peter Glen. Version " VERSION "\n\n");
         help_help();
         exit(0);
         }
@@ -332,7 +332,7 @@ int     parse_comline(int argc, char *argv[])
 
                 case 'v' :
                     printf (
-                "\nProgrammer's calculator by Peter Glen. Version 1.0\n");
+                "\nProgrammer's calculator by Peter Glen. Version " VERSION "\n");
                     exit(0);
                     break;
 
