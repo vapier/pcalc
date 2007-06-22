@@ -23,12 +23,12 @@ typedef struct
 CONSTS consts[] =
 
 {
-        "PI",    3.14159265358979323846,
-        "E",     2.71828182845904523536,
-        "GAMMA", 0.57721566490153286060,
-        "DEG",   57.29577951308322087680,
-        "PHI",   1.61803389974989484820,
-        NULL,    0.0
+        {"PI",    3.14159265358979323846},
+        {"E",     2.71828182845904523536},
+        {"GAMMA", 0.57721566490153286060},
+        {"DEG",   57.29577951308322087680},
+        {"PHI",   1.61803389974989484820},
+        {NULL,    0.0}
 } ;
 
 typedef struct
@@ -41,40 +41,40 @@ typedef struct
 BUILTINS    builtins[] =
 
 {
-        "sin",      sin,
-        "cos",      cos,
-        "atan",     atan,
-        "log",      Log,
-        "log10",    Log10,
-        "exp",      Exp,
-        "sqrt",     Sqrt,
-        "int",      integer,
-        "abs",      fabs,
-        "f2c",      f2c,
-        "c2f",      c2f,
-        "in2mm",    in2mm,
-        "mm2in",    mm2in,
-        "po2kg",    po2kg,
-        "kg2po",    kg2po,
+        {"sin",      sin},
+        {"cos",      cos},
+        {"atan",     atan},
+        {"log",      Log},
+        {"log10",    Log10},
+        {"exp",      Exp},
+        {"sqrt",     Sqrt},
+        {"int",      integer},
+        {"abs",      fabs},
+        {"f2c",      f2c},
+        {"c2f",      c2f},
+        {"in2mm",    in2mm},
+        {"mm2in",    mm2in},
+        {"po2kg",    po2kg},
+        {"kg2po",    kg2po},
 
 
-        "SIN",      sin,
-        "COS",      cos,
-        "ATAN",     atan,
-        "LOG",      Log,
-        "LOG10",    Log10,
-        "EXP",      Exp,
-        "SQRT",     Sqrt,
-        "INT",      integer,
-        "ABS",      fabs,
-        "F2C",      f2c,
-        "C2F",      c2f,
-        "IN2MM",    in2mm,
-        "MM2IN",    mm2in,
-        "PO2KG",    po2kg,
-        "KG2PO",    kg2po,
+        {"SIN",      sin},
+        {"COS",      cos},
+        {"ATAN",     atan},
+        {"LOG",      Log},
+        {"LOG10",    Log10},
+        {"EXP",      Exp},
+        {"SQRT",     Sqrt},
+        {"INT",      integer},
+        {"ABS",      fabs},
+        {"F2C",      f2c},
+        {"C2F",      c2f},
+        {"IN2MM",    in2mm},
+        {"MM2IN",    mm2in},
+        {"PO2KG",    po2kg},
+        {"KG2PO",    kg2po},
 
-        NULL,       (void *) 0
+        {NULL,       (void *) 0}
 } ;
 
 typedef struct
@@ -88,17 +88,17 @@ IBUILTINS    ibuiltins[] =
 
 {
 
-        "date",     ddate,
-        "print",    print,
-        "echo",     echo,
-        "_echo",    echo_nl,
+        {"date",     ddate},
+        {"print",    print},
+        {"echo",     echo},
+        {"_echo",    echo_nl},
 
-        "DATE",     ddate,
-        "PRINT",    print,
-        "ECHO",     echo,
-        "_ECHO",    echo_nl,
+        {"DATE",     ddate},
+        {"PRINT",    print},
+        {"ECHO",     echo},
+        {"_ECHO",    echo_nl},
 
-        NULL,       (void *) 0
+        {NULL,       (void *) 0}
 } ;
 
 

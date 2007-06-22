@@ -44,12 +44,12 @@
 
 /* -------- Protos ------------------------------------------------------- */
 
-int     basehelp(void);
-int     funchelp(void);
-int     ophelp(void);
-int     conshelp(void);
-int     cbhelp(void);
-int     help_help(void);
+void    basehelp(void);
+void    funchelp(void);
+void    ophelp(void);
+void    conshelp(void);
+void    cbhelp(void);
+void    help_help(void);
 
 /* -------- Declarations: ------------------------------------------------ */
 

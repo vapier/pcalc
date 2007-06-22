@@ -29,10 +29,10 @@ pcalcl.c: pcalcl.l
 	$(LEX) -o $@ $<
 
 clean:
-	rm -f *.o *~ *.var ptest/*~ core y.output
+	rm -f *.o *~ *.var ptest/*~ core y.output pcalc
 
 distclean: clean
-	rm -f pcalc.tab.c lexyy.c
+	rm -f pcalc.tab.c lexyy.c pcalcl.c pcalc.c pcalc.h
 
 check test: pcalc
 	mv -f pcalc.var pcalc.old; rm -f *.var 

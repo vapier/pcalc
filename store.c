@@ -34,7 +34,7 @@ int     store(char *file, char *name, double var)
 {
     FILE    *fp  = NULL;
     int     found = FALSE;
-    int     len, namelen;
+    int     namelen;
     char    tmp[18];
     Symbol *ms = lookup_sym("DEBUG_STORE");
 
@@ -98,7 +98,7 @@ int     restore(char *file, char *name, double *var)
 {
     FILE    *fp  = NULL;
     int     found = FALSE;
-    int     len, namelen;
+    int     namelen;
     char    tmp[18];
 
     Symbol *ms = lookup_sym("DEBUG_STORE");

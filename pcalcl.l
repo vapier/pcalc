@@ -490,5 +490,5 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
 int     count(void)
 
 {
-
+	return 0;
 }
