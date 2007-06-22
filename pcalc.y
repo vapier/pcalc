@@ -306,6 +306,18 @@ int     parse_comline(int argc, char *argv[])
             {
             switch(argv[i][1])
                 {
+                case 'h' :
+                    printf (
+                "\nProgrammer's calculator by Peter Glen.\n\n"
+                "Usage: pcalc <stuff to calculate>\n"
+                "       pcalc @script\n"
+                "\nOptions:\n"
+                "  -s,-S   silent mode\n"
+                "  -b,-B   silent mode\n"
+                "  -v      version\n"
+                "  -h      help\n"
+                "\nFor more info, run pcalc without any options, or see the README.\n\n");
+
                 case 'S' :          /* quiet mode */
                 case 's' :
                     fSilent = 1;
