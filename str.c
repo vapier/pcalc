@@ -102,6 +102,13 @@ unsigned int    str_esc(char *str, char *out, int lim)
             ret_val = TRUE;
             break;
             }
+        else if(str2-str+1 >= lim)
+            {
+            fprintf(stderr, "String too large for buffer of %i chars; truncated\n", lim-1);
+            ret_val = FALSE;
+            *str2 = '\0';
+            break;
+            }
         switch(*str2)
             {
             int tmp;
