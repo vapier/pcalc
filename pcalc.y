@@ -187,7 +187,7 @@ int     main(int argc, char *argv[])
         yyin = fopen(&argv[1][1], "rt");
         if(!yyin)
             {
-            printf("Cannot find file.\n");
+            fprintf(stderr, "Cannot find file.\n");
             exit(0);
             }
         }
@@ -210,7 +210,7 @@ int     main(int argc, char *argv[])
 
         if(!yyin)
             {
-            execerror( "cannot create tmp file\n", NULL); exit(0);
+            fprintf(stderr, "cannot create tmp file\n"); exit(0);
             }
         fwrite(buff, len, 1, yyin);
         fputc('\n', yyin);
