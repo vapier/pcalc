@@ -87,7 +87,6 @@ int     echo_nl(char *str)
     return(0);
 }
 
-char string[128];
 
 /* the date function */
 
@@ -96,12 +95,13 @@ int     ddate(char *str)
 {
     struct tm *loc_time;
     time_t lt;
+    char string[128];
 
     lt = time(NULL);
 
     str_esc(str, work_str, sizeof(work_str));
     loc_time = localtime(&lt);
-    strftime(string, 128, work_str, loc_time);
+    strftime(string, sizeof(string), work_str, loc_time);
 
     printf("%s", string);
 
