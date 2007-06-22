@@ -37,7 +37,6 @@
 
   extern  FILE * yyin ;
 
-  char    work_str[128];
 
   %}
 

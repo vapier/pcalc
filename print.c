@@ -31,7 +31,7 @@ void    long_to_bin_str(unsigned long num, char *str);
 
 /* -------- Implementation: ---------------------------------------------- */
 
-char    work_str[128];
+static char    work_str[128];
 
 void    print_num(double var)
 

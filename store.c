@@ -27,7 +27,7 @@
 
 /* -------- Implementation: ---------------------------------------------- */
 
-char    work_str[128];
+static char    work_str[128];
 
 int     store(char *file, char *name, double var)
 
