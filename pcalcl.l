@@ -285,16 +285,6 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                 #endif
                                 }
 
-\".*\"                          {
-                                #ifdef TEST
-                                printf(" String:  [ %s ]\n", yytext);
-                                #endif
-
-                                #ifdef RET_EACH
-                                //return(STR);
-                                #endif
-                                }
-
 ";"                             {
                                 count();
 
