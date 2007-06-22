@@ -48,7 +48,7 @@ dist pack: distclean
 	svn export . pcalc-$(VERSION)
 	svn log -v -r 1:HEAD > pcalc-$(VERSION)/ChangeLog
 	$(MAKE) -C pcalc-$(VERSION) pcalc.c pcalcl.c
-	$(MAKE) -C pcalc-$(VERSION)/test testsuite
+	$(MAKE) -C pcalc-$(VERSION)/ptest testsuite
 	tar jcf pcalc-$(VERSION).tar.bz2 pcalc-$(VERSION)
 	rm -rf pcalc-$(VERSION)
 
