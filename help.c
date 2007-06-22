@@ -33,7 +33,7 @@ Functions:\n\
     F2C   C2F   IN2MM  MM2IN  PO2KG   KG2PO\n\
 \n\
 Operators:\n\
-    '+' '-' '*' '/' '^'\n\
+    '+' '-' '*' '/' '%' '^'\n\
 \n\
 Constants: (case sensitive)\n\
         PI      E     GAMMA   DEG     PHI   \n\
@@ -74,12 +74,14 @@ void    ophelp(void)
 \n\
 Operator priorities:\n\
 \n\
-    right  assotiation:     '='        ASSIGNMENT\n\
-    left   assotiation:     or  and    BINARY OR/BINARY AND\n\
-    left   assotiation:     '+' '-'    ADDITION/SUBTRUCTION\n\
-    left   assotiation:     '*' '/'    MULTIPLY/DIVIDE\n\
-    left   assotiation:     '-'        UNARY MINUS\n\
-    right  assotiation:     '^'        EXPONENTATION\n\
+    right  assotiation:     '='         ASSIGNMENT\n\
+    left   assotiation:     or          BINARY OR\n\
+    left   assotiation:     and         BINARY AND\n\
+    left   assotiation:     '<' '>'     BINARY LEFT/RIGHT SHIFT\n\
+    left   assotiation:     '+' '-'     ADDITION/SUBTRUCTION\n\
+    left   assotiation:     '*' '/' '%' MULTIPLY/DIVIDE\n\
+    left   assotiation:     '-'         UNARY MINUS\n\
+    right  assotiation:     '^'         EXPONENTATION\n\
 \n\
 ");
     help_help();

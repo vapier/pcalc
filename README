@@ -59,12 +59,14 @@ Specification:
 
 Operator priorities:
 
-     LOW    '='        assignment
-            or  and    binary or/binary and
-            '+' '-'    addition/subtruction
-            '*' '/'    multiply/divide
-            '-'        unary minus
-     HIGH   '^'        exponentation
+     LOW    '='         assignment
+            or          binary or
+            and         binary and
+            '>' '<'     binary left/right shift
+            '+' '-'     addition/subtruction
+            '*' '/' '%' multiply/divide/modulus
+            '-'         unary minus
+     HIGH   '^'         exponentation
 
 Syntax:
 
