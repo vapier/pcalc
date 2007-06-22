@@ -150,7 +150,10 @@ FILE    *in_fp;
 int     main(int argc, char *argv[])
 
 {
-    int     comm = 0, args;
+    int     args;
+    char    template_local[] = "pcalc.tmp.XXXXXX",
+            template_global[] = "/tmp/pcalc.tmp.XXXXXX",
+            *template;
     char    *env;
 
     args = parse_comline(argc, argv);
@@ -197,6 +200,7 @@ int     main(int argc, char *argv[])
 
         char    *commandline;
         int     len, cnt;
+        int     tmpfile;
 
         for(cnt = args+1; cnt < argc; cnt++)
             {
@@ -206,19 +210,27 @@ int     main(int argc, char *argv[])
         //printf("CMDLINE='%s'\n", buff);
 
         len = strlen(buff);
-        yyin = fopen("pcalc.tmp", "w");
+        template = template_local;
+        tmpfile = mkstemp(template);
 
-        if(!yyin)
+        if(tmpfile == -1)
             {
-            fprintf(stderr, "cannot create tmp file\n"); exit(0);
+            template = template_global;
+            tmpfile = mkstemp(template);
+            if(tmpfile == -1)
+                {
+                fprintf(stderr, "cannot create tmp file\n"); exit(0);
+                }
             }
-        fwrite(buff, len, 1, yyin);
-        fputc('\n', yyin);
-	//fputc(0x1a,  yyin);
-        fclose(yyin);
+        write(tmpfile, buff, len);
+        write(tmpfile, "\n", 1);
+        //write(tmpfile, "\x1a", 1);
+        lseek(tmpfile, 0, SEEK_SET);
 
-        yyin = fopen("pcalc.tmp", "r");
-        comm = 1;
+        yyin = fdopen(tmpfile, "r");
+        /* XXX: hack! unlink here because if parsing fails, flex will
+         * exit and we won't be able to unlink the file below */
+        unlink(template);
         }
 
     init_sym() ;
@@ -227,10 +239,10 @@ int     main(int argc, char *argv[])
     yyparse() ;
 
     if(yyin)
-        fclose(yyin);
-
-    if(comm)
-        unlink("pcalc.tmp");
+        {
+        unlink(template); /* unlink before we close to avoid race */
+        fclose(yyin); /* this closes tmpfile too */
+        }
 
     return 0 ;
 }
