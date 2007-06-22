@@ -1,0 +1,17 @@
+AT_SETUP(007)
+
+AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.007], [0], [dnl
+
+hello world1
+hello world2
+
+Number: 99 is displayed in line as decimal
+Number: 63 is displayed in line as hex
+Number: 1100011 is displayed in line as binary
+
+Number is displayed normally
+
+	99      	0x63      	0y1100011
+])
+
+AT_CLEANUP

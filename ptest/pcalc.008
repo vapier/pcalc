@@ -34,5 +34,3 @@ _echo "Number: \t" aa
 echo " \tis displayed in line as binary."
 
 DEC = 0
-
-

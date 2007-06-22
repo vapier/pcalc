@@ -1,0 +1,2 @@
+m4_defun([PCALC_BINARY], [$top_builddir/pcalc])
+m4_defun([PCALC_FILESDIR], [$srcdir])
