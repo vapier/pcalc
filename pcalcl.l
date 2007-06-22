@@ -15,8 +15,6 @@
 extern YYSTYPE yylval;
 extern  int lineno;
 
-/* default yywrap function - always treat EOF as an EOF */
-#define yywrap() 1
 
 
 char    *name;

@@ -35,7 +35,7 @@ OB9            	= $(OS9).o
 # Our target:
 
 pcalc:  $(OB0) $(OB1) $(OB2) $(OB3) $(OB4) $(OB5) $(OB6) $(OB7) $(OB8) $(OB9)
-	$(CC) $(CFLAGS) $(OB0) $(OB1) $(OB2) $(OB3) $(OB4) $(OB5) $(OB6) $(OB7) $(OB8) $(OB9) -o pcalc -lm
+	$(CC) $(CFLAGS) $(OB0) $(OB1) $(OB2) $(OB3) $(OB4) $(OB5) $(OB6) $(OB7) $(OB8) $(OB9) -o pcalc -lm -lfl
 
 pcalc.c: pcalc.y
 	$(YACC) pcalc.y -o pcalc.c
