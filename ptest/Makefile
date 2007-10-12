@@ -1,7 +1,11 @@
 AUTOM4TE = autom4te
 AUTOTEST = $(AUTOM4TE) --language=autotest
 
-VERSION ?= svn $(shell svn info .. | sed -n '/^Last Changed Rev/s|^.*: ||p')
+VERSION ?= $(shell \
+	[ -d .svn ] \
+		&& (echo svn ; svn info .. | sed -n '/^Last Changed Rev/s|^.*: ||p') \
+		|| sed -n -e '/^VERSION/s:.*=[[:space:]]*::p' ../Makefile \
+)
 
 PACKAGE_NAME      = pcalc
 PACKAGE_TARNAME   = $(PACKAGE_NAME)
