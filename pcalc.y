@@ -154,7 +154,7 @@ int     main(int argc, char *argv[])
     int     args;
     char    template_local[] = "pcalc.tmp.XXXXXX",
             template_global[] = "/tmp/pcalc.tmp.XXXXXX",
-            *template;
+            *template = NULL;
 
     args = parse_comline(argc, argv);
 
@@ -247,7 +247,8 @@ int     main(int argc, char *argv[])
 
     if(yyin)
         {
-        unlink(template); /* unlink before we close to avoid race */
+        if (template)
+            unlink(template); /* unlink before we close to avoid race */
         fclose(yyin); /* this closes tmpfile too */
         }
 
