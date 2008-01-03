@@ -202,13 +202,14 @@ int     main(int argc, char *argv[])
         int     tmpfile;
         char    buff[512];
 
+        buff[0] = '\0';
         len = 0;
         for(cnt = args+1; cnt < argc; cnt++)
             {
             len += strlen(argv[cnt]) + 1;
             if (len >= sizeof(buff))
                 {
-                fprintf(stderr, "Input is too long (max of %lu chars allowed)\n", (unsigned long)sizeof(buff));
+                fprintf(stderr, "Input is too long (max of %zu chars allowed)\n", sizeof(buff));
                 exit(1);
                 }
             strcat(buff, argv[cnt]); strcat(buff, " ");
