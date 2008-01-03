@@ -54,7 +54,8 @@ dist pack: distclean
 
 distcheck: dist
 	tar jxf pcalc-$(VERSION).tar.bz2
-	$(MAKE) -C pcalc-$(VERSION) all check
+	$(MAKE) -C pcalc-$(VERSION) clean all check
+	env CFLAGS=-O2 $(MAKE) -C pcalc-$(VERSION) clean all check
 	rm -rf pcalc-$(VERSION)
 
 .PHONY: all check clean dist distcheck distclean install pack test
