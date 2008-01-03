@@ -1,0 +1,4 @@
+- change '<' and '>' to '<<' and '>>' so it can be copy & pasted from C
+- add support for octal numbers
+- try to handle unsigned/signed better
+- convert to 64bit numbers
