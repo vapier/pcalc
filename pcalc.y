@@ -34,6 +34,7 @@
 #include "store.h"
 #include "print.h"
 
+  int     fNibble = 0;
   int     fSilent = 0;
 
   extern  FILE * yyin ;
@@ -319,11 +320,17 @@ int     parse_comline(int argc, char *argv[])
                 "Usage: pcalc <stuff to calculate>\n"
                 "       pcalc @script\n"
                 "\nOptions:\n"
+                "  -n      nibble mode (space out binary display)\n"
                 "  -s,-S   silent mode\n"
                 "  -b,-B   silent mode\n"
                 "  -v      version\n"
                 "  -h      help\n"
                 "\nFor more info, run pcalc without any options, or see the README.\n\n");
+
+                case 'n' :          /* nibble mode */
+                    fNibble = 1;
+                    j++;
+                    break;
 
                 case 'S' :          /* quiet mode */
                 case 's' :

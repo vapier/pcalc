@@ -27,11 +27,11 @@
 
 /* -------- Forward references for procedures: --------------------------- */
 
-void    long_to_bin_str(unsigned long num, char *str);
+static void long_to_bin_str(unsigned long num, char *str);
 
 /* -------- Implementation: ---------------------------------------------- */
 
-static char    work_str[128];
+static char work_str[128];
 
 void    print_num(double var)
 
@@ -68,14 +68,13 @@ void    print_num(double var)
  *
  */
 
-#define  BITS_IN_LONG 32
+extern int fNibble;
 
-void    long_to_bin_str(unsigned long num, char *str)
-
+static void long_to_bin_str(unsigned long num, char *str)
 {
-    int a;
-    unsigned long   div;
-    char  *ptr, tmp_str[BITS_IN_LONG +1];
+    size_t i;
+    char tmp_str[sizeof(num) * 8 * 2 + 1];
+    char *p = tmp_str + sizeof(tmp_str) - 1;
 
     if (num == 0)                                          /* dummy result */
         {
@@ -83,23 +82,30 @@ void    long_to_bin_str(unsigned long num, char *str)
         return;
         }
 
-    for(a = BITS_IN_LONG; a > 0; a--)
-        {
-        div = (unsigned long)1 << (a-1);
-        if(num / div  != 0)
-            {
-            tmp_str[BITS_IN_LONG - a] = '1';
-            num  -=  div;
-            }
-        else
-            tmp_str[BITS_IN_LONG - a] = '0';
-        }
-    tmp_str[BITS_IN_LONG] = '\0';                             /* terminate */
+    *p-- = '\0';                                              /* terminate */
 
-    ptr = tmp_str;
-    while(*ptr == '0')                               /* skip leading zeros */
-        ptr++;
-    strcpy(str, ptr);                                     /* output result */
+    for (i = 0; i < sizeof(num) * 8; ++i)
+        {
+        unsigned long bit = (unsigned long)1 << i;
+        *p-- = (num & bit ? '1' : '0');
+
+        if (fNibble && (i + 1) % 4 == 0)
+            *p-- = ' ';
+        }
+    *p = ' ';
+
+    while (*p == '0' || *p == ' ')                   /* skip leading zeros */
+        ++p;
+
+    if (fNibble)                                /* fill out leading nibble */
+        {
+        for (i = 1; p[i] && p[i] != ' '; ++i)
+            continue;
+        while (i++ < 4)
+            *--p = '0';
+        }
+
+    strcpy(str, p);                                       /* output result */
 }
 
 /* EOF */
