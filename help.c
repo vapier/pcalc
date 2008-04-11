@@ -101,6 +101,12 @@ Constants:\n\
     DEG     57.29577951308322087680\n\
     PHI     1.61803389974989484820\n\
 \n\
+Values:\n\
+    0x...   Hex number\n\
+    0y...   Binary number\n\
+    0c...   Octal number\n\
+    ...     Decimal number\n\
+\n\
 ");
     help_help();
 }
