@@ -77,7 +77,7 @@ Operator priorities:\n\
     right  assotiation:     '='         ASSIGNMENT\n\
     left   assotiation:     or          BINARY OR\n\
     left   assotiation:     and         BINARY AND\n\
-    left   assotiation:     '<' '>'     BINARY LEFT/RIGHT SHIFT\n\
+    left   assotiation:     '<<' '>>'   BINARY LEFT/RIGHT SHIFT\n\
     left   assotiation:     '+' '-'     ADDITION/SUBTRUCTION\n\
     left   assotiation:     '*' '/' '%%' MULTIPLY/DIVIDE\n\
     left   assotiation:     '-'         UNARY MINUS\n\
