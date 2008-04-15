@@ -437,7 +437,7 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                 #endif
                                 }
 
-"<"                             {
+"<<"                            {
                                 count();
 
                                 #ifdef RET_EACH
@@ -445,7 +445,7 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                 #endif
                                 }
 
-">"                             {
+">>"                            {
                                 count();
 
                                 #ifdef RET_EACH
