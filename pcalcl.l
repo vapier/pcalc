@@ -94,7 +94,7 @@ int     count(void);
                                 #endif
                                 }
 
-0y[01]+[01]*                   {
+0[by][01]+[01]*                 {
                                 #ifdef TEST
                                 printf(" Binary:  [ %s ]\n", yytext);
                                 #endif
