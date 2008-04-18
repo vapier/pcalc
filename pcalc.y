@@ -111,6 +111,7 @@ expr:       NUMBER
         |   VAR                     { $$ = $1->u.val }
         |   BUILTIN '(' expr ')'    { $$ = (*($1->u.ptr))($3) ; }
         |   BUILTIN   expr          { $$ = (*($1->u.ptr))($2) ; }
+        |   '~' expr                { $$ = ~((long)$2) ; }
         |   expr '|' expr           { $$ = (long)$1 | (long)$3 ;}
         |   expr '&' expr           { $$ = (long)$1 & (long)$3 ;}
         |   expr 'X' expr           { $$ = (long)$1 ^ (long)$3 ;}
