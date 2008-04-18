@@ -113,6 +113,7 @@ expr:       NUMBER
         |   BUILTIN   expr          { $$ = (*($1->u.ptr))($2) ; }
         |   expr '|' expr           { $$ = (long)$1 | (long)$3 ;}
         |   expr '&' expr           { $$ = (long)$1 & (long)$3 ;}
+        |   expr 'X' expr           { $$ = (long)$1 ^ (long)$3 ;}
         |   expr '<' expr           { $$ = (long)$1 << (long)$3 ; }
         |   expr '>' expr           { $$ = (long)$1 >> (long)$3 ; }
         |   expr '+' expr           { $$ = $1 + $3 ; }
