@@ -4,7 +4,7 @@
 # Makefile for Linux. Please let me know if you port pcalc.
 #
 
-VERSION = 1.2
+VERSION = 1.3
 
 CC   ?= cc
 YACC  = bison -ld
@@ -49,11 +49,11 @@ dist pack: distclean
 	svn log -v -r 1:HEAD > pcalc-$(VERSION)/ChangeLog
 	$(MAKE) -C pcalc-$(VERSION) pcalc.c pcalcl.c
 	$(MAKE) -C pcalc-$(VERSION)/ptest testsuite
-	tar jcf pcalc-$(VERSION).tar.bz2 pcalc-$(VERSION)
+	tar cf - pcalc-$(VERSION) | lzma > pcalc-$(VERSION).tar.lzma
 	rm -rf pcalc-$(VERSION)
 
 distcheck: dist
-	tar jxf pcalc-$(VERSION).tar.bz2
+	lzcat pcalc-$(VERSION).tar.lzma | tar xf -
 	$(MAKE) -C pcalc-$(VERSION) clean all check
 	env CFLAGS=-O2 $(MAKE) -C pcalc-$(VERSION) clean all check
 	rm -rf pcalc-$(VERSION)
