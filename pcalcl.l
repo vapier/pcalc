@@ -73,6 +73,15 @@ int     count(void);
                                 #endif
                                 }
 
+"XOR" |
+"xor"                           {
+                                count();
+
+                                #ifdef RET_EACH
+                                return('X');
+                                #endif
+                                }
+
 "AND" |
 "and"                           {
                                 count();
