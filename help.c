@@ -75,8 +75,10 @@ void    ophelp(void)
 Operator priorities:\n\
 \n\
     right  assotiation:     '='         ASSIGNMENT\n\
+    right  association:     '~'         BINARY NEGATION\n\
     left   assotiation:     or          BINARY OR\n\
     left   assotiation:     and         BINARY AND\n\
+    left   assotiation:     xor         BINARY XOR\n\
     left   assotiation:     '<<' '>>'   BINARY LEFT/RIGHT SHIFT\n\
     left   assotiation:     '+' '-'     ADDITION/SUBTRUCTION\n\
     left   assotiation:     '*' '/' '%%' MULTIPLY/DIVIDE\n\
