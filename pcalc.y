@@ -201,26 +201,9 @@ int     main(int argc, char *argv[])
         {
         // we got command line, write to a file, fake file:
 
-        int     len, cnt;
+        int     cnt;
         int     tmpfile;
-        char    buff[512];
 
-        buff[0] = '\0';
-        len = 0;
-        for(cnt = args+1; cnt < argc; cnt++)
-            {
-            len += strlen(argv[cnt]) + 1;
-            if (len >= sizeof(buff))
-                {
-                fprintf(stderr, "Input is too long (max of %zu chars allowed)\n", sizeof(buff));
-                exit(1);
-                }
-            strcat(buff, argv[cnt]); strcat(buff, " ");
-            }
-
-        //printf("CMDLINE='%s'\n", buff);
-
-        len = strlen(buff);
         template = template_local;
         tmpfile = mkstemp(template);
 
@@ -233,15 +216,17 @@ int     main(int argc, char *argv[])
                 fprintf(stderr, "cannot create tmp file\n"); exit(0);
                 }
             }
-        write(tmpfile, buff, len);
-        write(tmpfile, "\n", 1);
-        //write(tmpfile, "\x1a", 1);
-        lseek(tmpfile, 0, SEEK_SET);
-
-        yyin = fdopen(tmpfile, "r");
         /* XXX: hack! unlink here because if parsing fails, flex will
          * exit and we won't be able to unlink the file below */
         unlink(template);
+
+        yyin = fdopen(tmpfile, "r+");
+
+        for(cnt = args+1; cnt < argc; cnt++)
+            fprintf(yyin, "%s ", argv[cnt]);
+        fprintf(yyin, "\n");
+        //write(tmpfile, "\x1a", 1);
+        rewind(yyin);
         }
 
     init_sym() ;
