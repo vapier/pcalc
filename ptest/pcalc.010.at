@@ -1,11 +1,7 @@
-AT_SETUP(010)
-
-AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.010], [0], [dnl
-/*                         
- * Build version number:   
- */                        
+PCALC_SIMPLE_AT_CHECK([010], [dnl
+/* 
+ * Build version number: 
+ */ 
 
 #define VERSION 1
 ])
-
-AT_CLEANUP
