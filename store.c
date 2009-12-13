@@ -66,8 +66,10 @@ int     store(char *file, char *name, double var)
         {
         long pos = ftell(fp);
 
-	fgets(work_str, sizeof(work_str), fp);
-	
+	if(!fgets(work_str, sizeof(work_str), fp))
+	  {
+	  break;
+	  }
 	//printf("fgets got:  %s\n", work_str);
 	
         if(*work_str == 0)
@@ -119,7 +121,8 @@ int     restore(char *file, char *name, double *var)
 
     while(TRUE)
         {
-	  fgets(work_str, sizeof(work_str), fp);
+	  if(fgets(work_str, sizeof(work_str), fp))
+	    break;
 	  
 	  if(!strncmp(work_str, tmp, namelen))
             {

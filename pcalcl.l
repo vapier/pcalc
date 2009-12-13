@@ -12,6 +12,9 @@
 #include "pcalc.h"
 #include "convert.h"
 
+/* avoid fwrite() gcc warning */
+#define fwrite(ptr, size, num, fp) ({ ssize_t s = fwrite(ptr, size, num, fp); s; })
+
 extern YYSTYPE yylval;
 extern  int lineno;
 
