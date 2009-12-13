@@ -4,7 +4,7 @@
 # Makefile for Linux. Please let me know if you port pcalc.
 #
 
-VERSION = 1.3
+VERSION = 2
 
 CC   ?= cc
 YACC  = bison -ld
