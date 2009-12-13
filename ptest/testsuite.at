@@ -13,3 +13,5 @@ m4_include(pcalc.009.at)
 dnl the output of these differ based on compile information
 dnl m4_include(pcalc.010.at)
 dnl m4_include(pcalc.011.at)
+
+m4_include(pcalc.012.at)
