@@ -121,7 +121,7 @@ int     restore(char *file, char *name, double *var)
 
     while(TRUE)
         {
-	  if(fgets(work_str, sizeof(work_str), fp))
+	  if(!fgets(work_str, sizeof(work_str), fp))
 	    break;
 	  
 	  if(!strncmp(work_str, tmp, namelen))
