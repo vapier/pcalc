@@ -22,7 +22,7 @@ int     nchar, nword, nline ;
 
 int     count(void);
 
-//define TEST
+//#define TEST
 #define RET_EACH
 
 %}
@@ -96,7 +96,7 @@ int     count(void);
                                 printf(" Hexadec: [ %s ]\n", yytext);
                                 #endif
 
-                                yylval.val = (double) hextol(yytext + 2);
+                                yylval.val = (double) hextoll(yytext + 2);
 
                                 #ifdef RET_EACH
                                 return(NUMBER);
@@ -132,7 +132,7 @@ int     count(void);
                                 printf(" Decimal: [ %s ]\n", yytext);
                                 #endif
 
-                                yylval.val = (double) atol(yytext);
+                                yylval.val = (double) atoll(yytext);
 
                                 #ifdef RET_EACH
                                 return(NUMBER);

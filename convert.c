@@ -58,28 +58,13 @@
  *
  */
 
-ulong   hextol(char *str)
-
+unsigned long long hextoll(char *str)
 {
-    ulong sum = 0L;
-    char chh, val;
+	unsigned long long ret;
 
-    while (isxdigit(*str))
-        {
-        chh = *str;
-        sum *= 0x10;
+	sscanf(str, "%llx", &ret);
 
-        if (isdigit(chh))
-            val = chh - '0';
-        else
-            {
-            chh = tolower(chh);
-            val = chh - 'a' + 10;
-            }
-        sum += val;
-        str++;
-        }
-    return(sum);
+	return ret;
 }
 
 /*
@@ -231,21 +216,19 @@ uint    declen(char *str)
     return(sum);
 }
 
-#if 0
-
 
 /*
- * Convert an ulong to a string representation in binary
+ * Convert an unsigned long to a string representation in binary
+ *
  */
 
-#define  BITS_IN_LONG 32
+extern int fNibble;
 
-void    long_to_bin_str(ulong num, char *str)
-
+void long_to_bin_str(unsigned long long num, char *str)
 {
-    int a;
-    ulong   div;
-    char  *ptr, tmp_str[BITS_IN_LONG +1];
+    size_t i;
+    char tmp_str[sizeof(num) * 8 * 2 + 1];
+    char *p = tmp_str + sizeof(tmp_str) - 1;
 
     if (num == 0)                                          /* dummy result */
         {
@@ -253,99 +236,31 @@ void    long_to_bin_str(ulong num, char *str)
         return;
         }
 
-    for(a = BITS_IN_LONG; a > 0; a--)
-        {
-        div = (ulong)1 << (a-1);
-        if(num / div  != 0)
-            {
-            tmp_str[BITS_IN_LONG - a] = '1';
-            num  -=  div;
-            }
-        else
-            tmp_str[BITS_IN_LONG - a] = '0';
-        }
-    tmp_str[BITS_IN_LONG] = '\0';                             /* terminate */
+    *p-- = '\0';                                              /* terminate */
 
-    ptr = tmp_str;
-    while(*ptr == '0')                               /* skip leading zeros */
-        ptr++;
-    strcpy(str, ptr);                                     /* output result */
+    for (i = 0; i < sizeof(num) * 8; ++i)
+        {
+        unsigned long long bit = (unsigned long long)1 << i;
+        *p-- = (num & bit ? '1' : '0');
+
+        if (fNibble && (i + 1) % 4 == 0)
+            *p-- = ' ';
+        }
+    *p = ' ';
+
+    while (*p == '0' || *p == ' ')                   /* skip leading zeros */
+        ++p;
+
+    if (fNibble)                                /* fill out leading nibble */
+        {
+        for (i = 1; p[i] && p[i] != ' '; ++i)
+            continue;
+        while (i++ < 4)
+            *--p = '0';
+        }
+
+    strcpy(str, p);                                       /* output result */
 }
 
-
-
-/*
- * Convert hex string to long.
- *
- */
-
-ulong   hextol(char *str)
-
-{
-    ulong sum = 0L;
-    char chh, val;
-
-    while (isxdigit(*str))
-        {
-        chh = *str;
-        sum *= 0x10;
-
-        if (isdigit(chh))
-            val = chh - '0';
-        else
-            {
-            chh = tolower(chh);
-            val = chh - 'a' + 10;
-            }
-        sum += val;
-        str++;
-        }
-    return(sum);
-}
-
-/*
- * Convert hex string to long.
- *
- */
-
-ulong   bintol(char *str)
-
-{
-    ulong sum = 0L;
-    char    chh;
-
-    while ((chh = *str) == '1' || chh == '0')
-        {
-        sum *= 2;                                   /* make the one higher */
-
-        if(chh == '1')
-            sum++;
-
-        str++;
-        }
-    return(sum);
-}
-
-/*
- * Convert octal string to long.
- *
- */
-
-ulong   otol(char *str)
-
-{
-    ulong   sum = 0L;
-    char    chh;
-
-    while ((chh = *str) >= '0' && chh <= '7')
-        {
-        sum *= 8;                                   /* make the one higher */
-        sum += chh - '0';
-        str++;
-        }
-    return(sum);
-}
-
-#endif
 
 /* EOF */
