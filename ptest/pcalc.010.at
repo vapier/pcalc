@@ -1,7 +1,12 @@
-PCALC_SIMPLE_AT_CHECK([010], [dnl
-/* 
- * Build version number: 
- */ 
+AT_SETUP([pcalc.010])
+
+echo 'buildnum = 1' > pcalc.var
+PCALC_FILTER_AT_CHECK([pcalc.010], [dnl
+/*
+ * Build version number:
+ */
 
 #define VERSION 1
 ])
+
+AT_CLEANUP
