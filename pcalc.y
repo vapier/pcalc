@@ -332,8 +332,7 @@ int     parse_comline(int argc, char *argv[])
                     break;
 
                 case 'v' :
-                    printf (
-                "\nProgrammer's calculator by Peter Glen. Version " VERSION "\n");
+                    puts("Programmer's calculator by Peter Glen. Version " VERSION);
                     exit(0);
                     break;
 
