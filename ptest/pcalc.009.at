@@ -1,9 +1,5 @@
-AT_SETUP(009)
-
-AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.009], [0], [dnl
-a 	 a 	 b 	 c
+PCALC_SIMPLE_AT_CHECK([009], [dnl
+a a b c
 
 WEEEE
 ])
-
-AT_CLEANUP

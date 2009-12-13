@@ -1,7 +1,3 @@
-AT_SETUP(005)
-
-AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.005], [0], [dnl
+PCALC_SIMPLE_AT_CHECK([005], [dnl
 Summing up: 596.88 Done
 ])
-
-AT_CLEANUP

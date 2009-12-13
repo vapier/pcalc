@@ -1,22 +1,18 @@
-AT_SETUP(003)
-
-AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.003], [0], [dnl
+PCALC_SIMPLE_AT_CHECK([003], [dnl
 Variables:
-	2       	0x2       	0y10
-	1       	0x1       	0y1
-	2       	0x2       	0y10
-	4       	0x4       	0y100
-	5       	0x5       	0y101
-	3       	0x3       	0y11
-	12      	0xc       	0y1100
-	40      	0x28      	0y101000
+ 2 0x2 0y10
+ 1 0x1 0y1
+ 2 0x2 0y10
+ 4 0x4 0y100
+ 5 0x5 0y101
+ 3 0x3 0y11
+ 12 0xc 0y1100
+ 40 0x28 0y101000
 
 Mixed hex bin:
 
-	4678    	0x1246    	0y1001001000110
-	257     	0x101     	0y100000001
-	100     	0x64      	0y1100100
-	479     	0x1df     	0y111011111
+ 4678 0x1246 0y1001001000110
+ 257 0x101 0y100000001
+ 100 0x64 0y1100100
+ 479 0x1df 0y111011111
 ])
-
-AT_CLEANUP

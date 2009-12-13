@@ -1,6 +1,4 @@
-AT_SETUP(007)
-
-AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.007], [0], [dnl
+PCALC_SIMPLE_AT_CHECK([007], [dnl
 
 hello world1
 hello world2
@@ -11,7 +9,5 @@ Number: 1100011 is displayed in line as binary
 
 Number is displayed normally
 
-	99      	0x63      	0y1100011
+ 99 0x63 0y1100011
 ])
-
-AT_CLEANUP
