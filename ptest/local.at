@@ -1,10 +1,16 @@
 m4_define([PCALC_BINARY], [$top_builddir/pcalc])
 m4_define([PCALC_FILESDIR], [$srcdir])
 
+m4_define([PCALC_FILTER_AT_CHECK], [dnl
+AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/$1 | \
+	sed \
+		-e 's:@<:@	 @:>@@<:@	 @:>@*: :g' \
+		-e 's: *$::'
+], [0], [$2])
+])
+
 m4_define([PCALC_SIMPLE_AT_CHECK], [dnl
 AT_SETUP([pcalc.$1])
-AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/pcalc.$1 | \
-	sed 's:@<:@	 @:>@@<:@	 @:>@*: :g'],
-[0], [$2])
+PCALC_FILTER_AT_CHECK([pcalc.$1], [$2])
 AT_CLEANUP
 ])
