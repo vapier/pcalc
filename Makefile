@@ -45,8 +45,8 @@ install:
 
 dist pack: distclean
 	rm -rf pcalc-$(VERSION)
-	svn export . pcalc-$(VERSION)
-	svn log -v -r 1:HEAD > pcalc-$(VERSION)/ChangeLog
+	git archive --prefix=pcalc-$(VERSION)/ HEAD | tar xf -
+	git log --stat > pcalc-$(VERSION)/ChangeLog
 	$(MAKE) -C pcalc-$(VERSION) pcalc.c pcalcl.c
 	$(MAKE) -C pcalc-$(VERSION)/ptest testsuite
 	tar cf - pcalc-$(VERSION) | lzma > pcalc-$(VERSION).tar.lzma

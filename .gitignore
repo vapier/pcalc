@@ -1,0 +1,16 @@
+*.diff
+*.patch
+*.orig
+*.rej
+
+*.o
+
+/pcalc
+/pcalc.c
+/pcalc.h
+/pcalcl.c
+/*.tar.lzma
+
+/ptest/package.m4
+/ptest/testsuite
+/ptest/testsuite.log
