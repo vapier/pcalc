@@ -42,9 +42,6 @@
 /* -------- Macros: ------------------------------------------------------ */
 
 
-//typedef unsigned long ulong   ;
-//typedef unsigned int  uint    ;
-
 /* -------- Protos ------------------------------------------------------- */
 
 unsigned long long hextoll(char *str);

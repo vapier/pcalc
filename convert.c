@@ -72,10 +72,10 @@ unsigned long long hextoll(char *str)
  *
  */
 
-ulong   bintol(char *str)
+unsigned long bintol(char *str)
 
 {
-    ulong sum = 0L;
+    unsigned long sum = 0L;
     char    chh;
 
     while ((chh = *str) == '1' || chh == '0')
@@ -95,10 +95,10 @@ ulong   bintol(char *str)
  *
  */
 
-ulong   otol(char *str)
+unsigned long otol(char *str)
 
 {
-    ulong   sum = 0L;
+    unsigned long sum = 0L;
     char    chh;
 
     while ((chh = *str) >= '0' && chh <= '7')
@@ -110,7 +110,7 @@ ulong   otol(char *str)
     return(sum);
 }
 
-uint    hextoi(char *str, int lim)
+unsigned int hextoi(char *str, int lim)
 
 {
     unsigned int sum = 0;
@@ -145,7 +145,7 @@ uint    hextoi(char *str, int lim)
 }
 
 
-uint    dectoi(char *str, int lim)
+unsigned int dectoi(char *str, int lim)
 
 {
     unsigned int sum = 0;
@@ -175,7 +175,7 @@ uint    dectoi(char *str, int lim)
 }
 
 
-uint    hexlen(char *str)
+unsigned int hexlen(char *str)
 
 {
     unsigned int sum = 0;
@@ -196,7 +196,7 @@ uint    hexlen(char *str)
 }
 
 
-uint    declen(char *str)
+unsigned int declen(char *str)
 
 {
     unsigned int sum = 0;
