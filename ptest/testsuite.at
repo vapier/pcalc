@@ -1,4 +1,5 @@
 AT_INIT
+AT_COLOR_TESTS
 
 m4_include(pcalc.001.at)
 m4_include(pcalc.002.at)

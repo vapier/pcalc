@@ -33,8 +33,10 @@ testsuite: package.m4 $(wildcard *.at)
 	$(AUTOTEST) -o $@.tmp $@.at
 	mv $@.tmp $@
 
+TESTSUITEFLAGS = --jobs=`getconf _NPROCESSORS_ONLN || echo 1`
+
 check test: testsuite $(TEST_PROGS)
-	./testsuite
+	./testsuite $(TESTSUITEFLAGS)
 
 install:
 
