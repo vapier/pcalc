@@ -10,6 +10,7 @@
 /pcalc.h
 /pcalcl.c
 /*.tar.lzma
+/*.tar.xz
 
 /ptest/package.m4
 /ptest/testsuite

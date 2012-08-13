@@ -49,11 +49,11 @@ dist pack: distclean
 	git log --stat > pcalc-$(VERSION)/ChangeLog
 	$(MAKE) -C pcalc-$(VERSION) pcalc.c pcalcl.c
 	$(MAKE) -C pcalc-$(VERSION)/ptest testsuite
-	tar cf - pcalc-$(VERSION) | lzma > pcalc-$(VERSION).tar.lzma
+	tar cf - pcalc-$(VERSION) | xz > pcalc-$(VERSION).tar.xz
 	rm -rf pcalc-$(VERSION)
 
 distcheck: dist
-	lzcat pcalc-$(VERSION).tar.lzma | tar xf -
+	lzcat pcalc-$(VERSION).tar.xz | tar xf -
 	$(MAKE) -C pcalc-$(VERSION) clean all check
 	env CFLAGS=-O2 $(MAKE) -C pcalc-$(VERSION) clean all check
 	rm -rf pcalc-$(VERSION)
