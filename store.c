@@ -88,8 +88,11 @@ int     store(char *file, char *name, double var)
         if(ferror(fp))
             break;
         }
-    sprintf(work_str, "%-16s = %-16e\n", tmp, var);
-    fputs(work_str, fp);
+    if (found)
+      {
+        sprintf(work_str, "%-16s = %-16e\n", tmp, var);
+        fputs(work_str, fp);
+      }
     fclose(fp);
     return(1);
 }
