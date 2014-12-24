@@ -108,7 +108,7 @@ asgn:   VAR '=' expr                { $$ = $1->u.val = $3 ; $1->type = VAR ; }
 
 
 expr:       NUMBER
-        |   VAR                     { $$ = $1->u.val }
+        |   VAR                     { $$ = $1->u.val ; }
         |   BUILTIN '(' expr ')'    { $$ = (*($1->u.ptr))($3) ; }
         |   BUILTIN   expr          { $$ = (*($1->u.ptr))($2) ; }
         |   '~' expr                { $$ = ~((long)$2) ; }
