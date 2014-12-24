@@ -54,9 +54,10 @@ dist pack: distclean
 	rm -rf pcalc-$(VERSION)
 
 distcheck: dist
-	lzcat pcalc-$(VERSION).tar.xz | tar xf -
-	$(MAKE) -C pcalc-$(VERSION) clean all check
-	env CFLAGS=-O2 $(MAKE) -C pcalc-$(VERSION) clean all check
+	xzcat pcalc-$(VERSION).tar.xz | tar xf -
+	set -e; \
+	for t in clean all check; do $(MAKE) -C pcalc-$(VERSION) $$t; done; \
+	for t in clean all check; do env CFLAGS=-O2 $(MAKE) -C pcalc-$(VERSION) $$t; done
 	rm -rf pcalc-$(VERSION)
 
 .PHONY: all check clean dist distcheck distclean install pack test
