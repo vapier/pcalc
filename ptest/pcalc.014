@@ -1,0 +1,4 @@
+// Make sure octal constants work
+
+0c1234
+0o0777
