@@ -125,7 +125,7 @@ Built in variables:\n\
 \n\
     DEBUG           for debug\n\
     DECIMAL         controlling number display\n\
-                    0 = normal, 1 = DEC 2 = HEX, 3 = BIN\n\
+                    0 = normal, 1 = DEC 2 = HEX, 3 = BIN, 4 = OCT\n\
 \n\
 ");
 }

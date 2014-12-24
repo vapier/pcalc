@@ -56,7 +56,7 @@ Specification:
  Built in variables:
 
     DEBUG           for debug 0=off 1=on
-    DEC             controlling number display 0=default 1=dec 2=hex 3=bin
+    DEC             controlling number display 0=default 1=dec 2=hex 3=bin 4=oct
 
 Operator priorities:
 

@@ -35,6 +35,7 @@
 #include "print.h"
 
   int     fNibble = 0;
+  int     fOctal = 0;
   int     fSilent = 0;
 
   extern  FILE * yyin ;
@@ -311,6 +312,7 @@ int     parse_comline(int argc, char *argv[])
                 "       pcalc @script\n"
                 "\nOptions:\n"
                 "  -n      nibble mode (space out binary display)\n"
+                "  -o      include octal in output\n"
                 "  -s,-S   silent mode\n"
                 "  -b,-B   silent mode\n"
                 "  -v      version\n"
@@ -320,6 +322,11 @@ int     parse_comline(int argc, char *argv[])
 
                 case 'n' :          /* nibble mode */
                     fNibble = 1;
+                    j++;
+                    break;
+
+                case 'o' :          /* octal mode */
+                    fOctal = 1;
                     j++;
                     break;
 

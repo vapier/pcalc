@@ -33,4 +33,9 @@ DEC = 3
 _echo "Number: \t" aa
 echo " \tis displayed in line as binary."
 
+DEC = 4
+
+_echo "Number: \t" aa
+echo " \tis displayed in line as octal."
+
 DEC = 0

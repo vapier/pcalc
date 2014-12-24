@@ -30,6 +30,8 @@
 
 static char work_str[128];
 
+extern int fOctal;
+
 void    print_num(double var)
 
 {
@@ -53,10 +55,18 @@ void    print_num(double var)
 	long_to_bin_str((unsigned long long)var, work_str);
 	printf("%s", work_str);
       }
+    else if(msx && msx->u.val == 4)
+      {
+	printf("%llo", (unsigned long long)var);
+      }
     else
       {
 	long_to_bin_str((unsigned long long)var, work_str);
-	printf("\t%-16.16g\t0x%-16llx\t0y%s\n" , var, (unsigned long long)var, work_str);
+	printf("\t%-16.16g", var);
+	if (fOctal)
+	  printf("\t0o%-16llo", (unsigned long long)var);
+	printf("\t0x%-16llx", (unsigned long long)var);
+	printf("\t0y%s\n", work_str);
       }
 }
 

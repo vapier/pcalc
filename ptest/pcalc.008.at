@@ -15,4 +15,5 @@ Number is displayed as DEC, HEX, BIN:
 Number: 99 is displayed in line as decimal.
 Number: 63 is displayed in line as hex.
 Number: 1100011 is displayed in line as binary.
+Number: 143 is displayed in line as octal.
 ])
