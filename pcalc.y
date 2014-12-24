@@ -165,25 +165,28 @@ int     main(int argc, char *argv[])
 
     if(!argv[1])
         {
-        printf ("\nProgrammer's calculator by Peter Glen. Version " VERSION "\n\n");
+        printf("Programmer's calculator by Peter Glen. Version " VERSION "\n\n");
+        basehelp();
         help_help();
         exit(0);
         }
-    if(*argv[1] == 'f' && argv[1][1] == '\0')
+    if (!argv[2] && argv[1][1] == '\0')
         {
-        funchelp();  exit(0);
-        }
-    if(*argv[1] == 'l' && argv[1][1] == '\0')
-        {
-        cbhelp();   exit(0);
-        }
-    if(*argv[1] == 'o' && argv[1][1] == '\0')
-        {
-        ophelp();   exit(0);
-        }
-    if(*argv[1] == 'c'&& argv[1][1] == '\0')
-        {
-        conshelp();   exit(0);
+        int helped = FALSE;
+        char c = *argv[1];
+        if (c == 'e' || c == 'f')
+            helped = TRUE, funchelp();
+        if (c == 'e' || c == 'l')
+            helped = TRUE, cbhelp();
+        if (c == 'e' || c == 'o')
+            helped = TRUE, ophelp();
+        if (c == 'e' || c == 'c')
+            helped = TRUE, conshelp();
+        if (helped)
+            {
+            help_help();
+            exit(0);
+            }
         }
 
     if(*argv[1] == '@' )
@@ -303,7 +306,7 @@ int     parse_comline(int argc, char *argv[])
                 {
                 case 'h' :
                     printf (
-                "\nProgrammer's calculator by Peter Glen.\n\n"
+                "Programmer's calculator by Peter Glen.\n\n"
                 "Usage: pcalc <stuff to calculate>\n"
                 "       pcalc @script\n"
                 "\nOptions:\n"
@@ -312,7 +315,8 @@ int     parse_comline(int argc, char *argv[])
                 "  -b,-B   silent mode\n"
                 "  -v      version\n"
                 "  -h      help\n"
-                "\nFor more info, run pcalc without any options, or see the README.\n\n");
+                "\n");
+                help_help();
 
                 case 'n' :          /* nibble mode */
                     fNibble = 1;

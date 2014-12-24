@@ -27,26 +27,27 @@ void    basehelp(void)
 {
 
         printf("\
-\n\
 Functions:\n\
     SIN   COS   ATAN   LOG    LOG10   EXP   SQRT   INT   ABS\n\
     F2C   C2F   IN2MM  MM2IN  PO2KG   KG2PO\n\
 \n\
 Operators:\n\
-    '+' '-' '*' '/' '%%' '^'\n\
+    '=' '+' '-' '*' '/' '%%' '^'\n\
+    '~' or and xor '<<' '>>'\n\
 \n\
 Constants: (case sensitive)\n\
-        PI      E     GAMMA   DEG     PHI   \n\
+    PI      E       GAMMA   DEG     PHI   \n\
+\n\
+Values:\n\
+    0x...   0y...   0c...   0o...\n\
 \n\
 ");
-    help_help();
 }
 
 void    funchelp(void)
 
 {
         printf("\
-\n\
 Functions: (case insensitive)\n\
 \n\
     SIN         math sinus              COS        math cos   \n\
@@ -63,15 +64,12 @@ Functions: (case insensitive)\n\
     KG2PO       converting mass        -> kilogram to pounds\n\
 \n\
 ");
-    help_help();
-
 }
 
 void    ophelp(void)
 
 {
         printf("\
-\n\
 Operator priorities:\n\
 \n\
     right  association:     '='         ASSIGNMENT\n\
@@ -86,15 +84,12 @@ Operator priorities:\n\
     right  association:     '^'         EXPONENTATION\n\
 \n\
 ");
-    help_help();
-
 }
 
 void    conshelp(void)
 
 {
         printf("\
-\n\
 Constants:\n\
 \n\
     PI      3.14159265358979323846\n\
@@ -111,7 +106,6 @@ Values:\n\
     ...     Decimal number\n\
 \n\
 ");
-    help_help();
 }
 
 
@@ -119,7 +113,6 @@ void    cbhelp(void)
 
 {
         printf("\
-\n\
 Controls:\n\
 \n\
     date    -echo string, expanding date (strftime compatible)\n\
@@ -135,7 +128,6 @@ Built in variables:\n\
                     0 = normal, 1 = DEC 2 = HEX, 3 = BIN\n\
 \n\
 ");
-    help_help();
 }
 
 
@@ -144,11 +136,11 @@ void    help_help(void)
 {
 
         printf("\
-For functions type pcalc f\n\
-For controls  type pcalc l\n\
-For operators type pcalc o\n\
-For constants type pcalc c\n\
-\n\
+For everything type pcalc e\n\
+For functions  type pcalc f\n\
+For controls   type pcalc l\n\
+For operators  type pcalc o\n\
+For constants  type pcalc c\n\
 ");
 
 }
