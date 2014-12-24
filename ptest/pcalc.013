@@ -1,0 +1,35 @@
+// Make sure xor works
+
+echo "two"
+0 xor 0
+0 xor 1
+1 xor 0
+1 xor 1
+
+echo "three"
+0 xor 0 xor 0
+0 xor 0 xor 1
+0 xor 1 xor 0
+0 xor 1 xor 1
+1 xor 0 xor 0
+1 xor 0 xor 1
+1 xor 1 xor 0
+1 xor 1 xor 1
+
+echo "four"
+0 xor 0 xor 0 xor 0
+0 xor 0 xor 0 xor 1
+0 xor 0 xor 1 xor 0
+0 xor 0 xor 1 xor 1
+0 xor 1 xor 0 xor 0
+0 xor 1 xor 0 xor 1
+0 xor 1 xor 1 xor 0
+0 xor 1 xor 1 xor 1
+1 xor 0 xor 0 xor 0
+1 xor 0 xor 0 xor 1
+1 xor 0 xor 1 xor 0
+1 xor 0 xor 1 xor 1
+1 xor 1 xor 0 xor 0
+1 xor 1 xor 0 xor 1
+1 xor 1 xor 1 xor 0
+1 xor 1 xor 1 xor 1

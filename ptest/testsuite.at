@@ -16,3 +16,4 @@ dnl the output of this uses time(0) which makes it hard to verify
 dnl m4_include(pcalc.011.at)
 
 m4_include(pcalc.012.at)
+m4_include(pcalc.013.at)
