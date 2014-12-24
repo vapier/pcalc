@@ -21,6 +21,7 @@ OBJS = $(patsubst %,%.o,$(SRCS))
 all: pcalc
 
 pcalc: $(OBJS)
+pcalc: LDFLAGS += $(CFLAGS)
 
 pcalc.c: pcalc.y
 	$(YACC) -o $@ $<
