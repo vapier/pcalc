@@ -74,16 +74,16 @@ void    ophelp(void)
 \n\
 Operator priorities:\n\
 \n\
-    right  assotiation:     '='         ASSIGNMENT\n\
+    right  association:     '='         ASSIGNMENT\n\
     right  association:     '~'         BINARY NEGATION\n\
-    left   assotiation:     or          BINARY OR\n\
-    left   assotiation:     and         BINARY AND\n\
-    left   assotiation:     xor         BINARY XOR\n\
-    left   assotiation:     '<<' '>>'   BINARY LEFT/RIGHT SHIFT\n\
-    left   assotiation:     '+' '-'     ADDITION/SUBTRUCTION\n\
-    left   assotiation:     '*' '/' '%%' MULTIPLY/DIVIDE\n\
-    left   assotiation:     '-'         UNARY MINUS\n\
-    right  assotiation:     '^'         EXPONENTATION\n\
+    left   association:     or          BINARY OR\n\
+    left   association:     and         BINARY AND\n\
+    left   association:     xor         BINARY XOR\n\
+    left   association:     '<<' '>>'   BINARY LEFT/RIGHT SHIFT\n\
+    left   association:     '+' '-'     ADDITION/SUBTRACTION\n\
+    left   association:     '*' '/' '%%' MULTIPLY/DIVIDE\n\
+    left   association:     '-'         UNARY MINUS\n\
+    right  association:     '^'         EXPONENTATION\n\
 \n\
 ");
     help_help();
@@ -131,7 +131,7 @@ Controls:\n\
 Built in variables:\n\
 \n\
     DEBUG           for debug\n\
-    DECIMAL         controling number display\n\
+    DECIMAL         controlling number display\n\
                     0 = normal, 1 = DEC 2 = HEX, 3 = BIN\n\
 \n\
 ");

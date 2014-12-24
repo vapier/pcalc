@@ -1,7 +1,7 @@
 
 /* =====[ store.c ]=========================================================
 
-   Description:    Store varible for pcalc
+   Description:    Store variable for pcalc
 
    Revisions:
 

@@ -10,7 +10,7 @@ It took a lot of hard work, and mostly a good pocket calculator.
 
 Main features:
 
-     o Full math parser, paranthases, add, sub, mult, div, exponential
+     o Full math parser, parentheses, add, sub, mult, div, exponential
      o Automatic conversion between HEX DEC OCT BIN numbers
      o Mixing different bases in one expression
      o Definable variables
@@ -50,13 +50,13 @@ Specification:
     echo            echo to the screen
    _echo            echo to the screen, no new line
     date            echo to the screen, expanding date variables 
-   store            store vaiable to file
-   restore          restore vaiable from file
+   store            store variable to file
+   restore          restore viable from file
 
  Built in variables:
 
     DEBUG           for debug 0=off 1=on
-    DEC             controling number display 0=default 1=dec 2=hex 3=bin
+    DEC             controlling number display 0=default 1=dec 2=hex 3=bin
 
 Operator priorities:
 
@@ -64,10 +64,10 @@ Operator priorities:
             or          binary or
             and         binary and
             '>' '<'     binary left/right shift
-            '+' '-'     addition/subtruction
+            '+' '-'     addition/subtraction
             '*' '/' '%' multiply/divide/modulus
             '-'         unary minus
-     HIGH   '^'         exponentation
+     HIGH   '^'         exponentiation
 
 Syntax:
 
@@ -140,7 +140,7 @@ pcalc @pcalc.001
 
 Dirty:
 
-This project was constructed in a 'quick and dirty' scedule, please
+This project was constructed in a 'quick and dirty' schedule, please
 forgive missing parts etc ...
 
 Feedback:

@@ -76,7 +76,7 @@
  *                                   xnn :   hex numbered character
  *                                   nnn :   dec numbered character
  *
- *  The dec number overflow is interpretes as 2 dec numbered character +
+ *  The dec number overflow is interpreted as 2 dec numbered character +
  *  the following character interpreted normally.
  *
  */
