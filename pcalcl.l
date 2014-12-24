@@ -118,7 +118,7 @@ int     count(void);
                                 #endif
                                 }
 
-0c[0-7]+[0-7]*                 {
+0[co][0-7]+[0-7]*               {
                                 #ifdef TEST
                                 printf(" Octal:   [ %s ]\n", yytext);
                                 #endif

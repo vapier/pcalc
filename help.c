@@ -107,6 +107,7 @@ Values:\n\
     0x...   Hex number\n\
     0y...   Binary number\n\
     0c...   Octal number\n\
+    0o...   Octal number\n\
     ...     Decimal number\n\
 \n\
 ");
