@@ -11,7 +11,7 @@ PACKAGE_NAME      = pcalc
 PACKAGE_TARNAME   = $(PACKAGE_NAME)
 PACKAGE_VERSION   = $(VERSION)
 PACKAGE_STRING    = $(PACKAGE_NAME) $(PACKAGE_VERSION)
-PACKAGE_BUGREPORT = pcalc-devel@lists.sourceforge.net
+PACKAGE_BUGREPORT = https://github.com/vapier/pcalc/issues
 
 export builddir = $(shell echo $$PWD)
 export top_builddir = $(builddir)/..
