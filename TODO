@@ -1,2 +1,5 @@
 - try to handle unsigned/signed better
-- convert to 64bit numbers
+- convert to 64bit numbers and gmp
+- allow specifying of exact bit sizes
+- allow unicode output/input ?
+- support formatting output using literal separators
