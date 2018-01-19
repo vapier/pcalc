@@ -18,13 +18,6 @@
 extern YYSTYPE yylval;
 extern  int lineno;
 
-
-
-char    *name;
-int     nchar, nword, nline ;
-
-int     count(void);
-
 //#define TEST
 #define RET_EACH
 
@@ -34,24 +27,18 @@ int     count(void);
 
 "STORE" |
 "store"                         {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(STORE);
                                 #endif
                                 }
 "RESTORE" |
 "restore"                       {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(RESTORE);
                                 #endif
                                 }
 "TO" |
 "to"                            {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(TO);
                                 #endif
@@ -59,8 +46,6 @@ int     count(void);
 
 "FROM" |
 "from"                          {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(FROM);
                                 #endif
@@ -69,8 +54,6 @@ int     count(void);
 
 "OR" |
 "or"                            {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('|');
                                 #endif
@@ -78,8 +61,6 @@ int     count(void);
 
 "XOR" |
 "xor"                           {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('X');
                                 #endif
@@ -87,8 +68,6 @@ int     count(void);
 
 "AND" |
 "and"                           {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('&');
                                 #endif
@@ -298,209 +277,153 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                 }
 
 ";"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(';');
                                 #endif
                                 }
 
 "{"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('{');
                                 #endif
                                 }
 
 "}"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('}');
                                 #endif
                                 }
 
 ","                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(',');
                                 #endif
                                 }
 
 ":"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(':');
                                 #endif
                                 }
 
 "="                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('=');
                                 #endif
                                 }
 
 "("                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('(');
                                 #endif
                                 }
 
 ")"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(')');
                                 #endif
                                 }
 
 "["                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('[');
                                 #endif
                                 }
 
 "]"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return(']');
                                 #endif
                                 }
 
 "."                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('.');
                                 #endif
                                 }
 
 "&"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('&');
                                 #endif
                                 }
 
 "!"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('!');
                                 #endif
                                 }
 
 "~"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('~');
                                 #endif
                                 }
 
 "-"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('-');
                                 #endif
                                 }
 
 "+"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('+');
                                 #endif
                                 }
 
 "*"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('*');
                                 #endif
                                 }
 
 "/"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('/');
                                 #endif
                                 }
 
 "%"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('%');
                                 #endif
                                 }
 
 "<<"                            {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('<');
                                 #endif
                                 }
 
 ">>"                            {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('>');
                                 #endif
                                 }
 
 "^"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('^');
                                 #endif
                                 }
 
 "|"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('|');
                                 #endif
                                 }
 
 "?"                             {
-                                count();
-
                                 #ifdef RET_EACH
                                 return('?');
                                 #endif
                                 }
 
 .                              {
-                                count();
-
                                 #ifdef RET_EACH
                                 //return(yytext[0]);
                                 #endif
                                }                    /* ignore all the rest */
 
 %%
-
-int     count(void)
-
-{
-	return 0;
-}
