@@ -355,5 +355,3 @@ int     parse_comline(int argc, char *argv[])
         }
     return(j);
 }
-
-/* EOF */

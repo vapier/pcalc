@@ -69,5 +69,3 @@ void    print_num(double var)
 	printf("\t0y%s\n", work_str);
       }
 }
-
-/* EOF */

@@ -146,7 +146,3 @@ int     restore(char *file, char *name, double *var)
     fclose(fp);
     return(1);
 }
-
-/* EOF */
-
-

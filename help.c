@@ -147,9 +147,3 @@ For constants  type pcalc c\n\
 ");
 
 }
-
-
-/* EOF */
-
-
-
