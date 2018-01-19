@@ -118,12 +118,12 @@ int     count(void);
                                 #endif
                                 }
 
-0[co][0-7]+[0-7]*               {
+0[co]?[0-7]+[0-7]*              {
                                 #ifdef TEST
                                 printf(" Octal:   [ %s ]\n", yytext);
                                 #endif
 
-                                yylval.val = otol(yytext + 2);
+                                yylval.val = otol(yytext + 1 + (yytext[1] == 'c' || yytext[1] == 'o' ? 1 : 0));
 
                                 #ifdef RET_EACH
                                 return(NUMBER);

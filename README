@@ -23,6 +23,7 @@ Specification:
 
     0x1234              hexadecimal
     0X1234              hexadecimal
+     01234              octal
     0o1234              octal
     0c1234              octal
     0b0101              binary
