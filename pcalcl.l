@@ -94,7 +94,7 @@ int     count(void);
                                 #endif
                                 }
 
-0x[0-9a-fA-F]+[0-9a-fA-F]* {
+0[xX][0-9a-fA-F]+[0-9a-fA-F]* {
                                 #ifdef TEST
                                 printf(" Hexadec: [ %s ]\n", yytext);
                                 #endif

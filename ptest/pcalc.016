@@ -1,0 +1,8 @@
+// Make sure hex constants work
+
+0x12345678
+0x90abcdef
+0xABCDEF
+0X12345678
+0X90abcdef
+0XABCDEF
