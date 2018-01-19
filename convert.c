@@ -38,13 +38,34 @@
  *
  */
 
-unsigned long long hextoll(char *str)
+unsigned long long hextoll(const char *str)
 {
-	unsigned long long ret;
+	unsigned long long sum = 0;
 
-	sscanf(str, "%llx", &ret);
+	while (*str) {
+		switch (*str) {
+		case '0'...'9':
+			sum <<= 4;
+			sum += (*str - '0');
+			break;
+		case 'a'...'f':
+			sum <<= 4;
+			sum += 0xa + (*str - 'a');
+			break;
+		case 'A'...'F':
+			sum <<= 4;
+			sum += 0xa + (*str - 'A');
+			break;
+		case '_':
+			break;
+		default:
+			return sum;
+		}
 
-	return ret;
+		++str;
+	}
+
+	return sum;
 }
 
 /*
@@ -52,22 +73,29 @@ unsigned long long hextoll(char *str)
  *
  */
 
-unsigned long bintol(char *str)
-
+unsigned long bintol(const char *str)
 {
-    unsigned long sum = 0L;
-    char    chh;
+	unsigned long sum = 0L;
 
-    while ((chh = *str) == '1' || chh == '0')
-        {
-        sum *= 2;                                   /* make the one higher */
+	while (*str) {
+		switch (*str) {
+		case '1':
+			sum <<= 1;
+			++sum;
+			break;
+		case '0':
+			sum <<= 1;
+			break;
+		case '_':
+			break;
+		default:
+			return sum;
+		}
 
-        if(chh == '1')
-            sum++;
+		++str;
+	}
 
-        str++;
-        }
-    return(sum);
+	return sum;
 }
 
 /*
@@ -75,19 +103,53 @@ unsigned long bintol(char *str)
  *
  */
 
-unsigned long otol(char *str)
-
+unsigned long otol(const char *str)
 {
-    unsigned long sum = 0L;
-    char    chh;
+	unsigned long sum = 0L;
 
-    while ((chh = *str) >= '0' && chh <= '7')
-        {
-        sum *= 8;                                   /* make the one higher */
-        sum += chh - '0';
-        str++;
-        }
-    return(sum);
+	while (*str) {
+		switch (*str) {
+		case '0'...'7':
+			sum <<= 3;
+			sum += (*str - '0');
+			break;
+		case '_':
+			break;
+		default:
+			return sum;
+		}
+
+		++str;
+	}
+
+	return sum;
+}
+
+/*
+ * Convert decimal string to long.
+ *
+ */
+
+unsigned long long dtoll(const char *str)
+{
+	unsigned long long sum = 0;
+
+	while (*str) {
+		switch (*str) {
+		case '0'...'9':
+			sum *= 10;
+			sum += (*str - '0');
+			break;
+		case '_':
+			break;
+		default:
+			return sum;
+		}
+
+		++str;
+	}
+
+	return sum;
 }
 
 unsigned int hextoi(char *str, int lim)

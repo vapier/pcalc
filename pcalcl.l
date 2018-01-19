@@ -57,7 +57,7 @@ extern  int lineno;
                                 return('&');
                                 }
 
-0[xX][0-9a-fA-F]+[0-9a-fA-F]* {
+0[xX][0-9a-fA-F]+([0-9a-fA-F_]*[0-9a-fA-F]+)? {
                                 debug(" Hexadec: [ %s ]\n", yytext);
 
                                 yylval.val = (double) hextoll(yytext + 2);
@@ -65,7 +65,7 @@ extern  int lineno;
                                 return(NUMBER);
                                 }
 
-0[by][01]+[01]*                 {
+0[by][01]+([01_]*[01]+)?        {
                                 debug(" Binary:  [ %s ]\n", yytext);
 
                                 yylval.val = bintol(yytext + 2);
@@ -73,7 +73,7 @@ extern  int lineno;
                                 return(NUMBER);
                                 }
 
-0[co]?[0-7]+[0-7]*              {
+0([oc]?[0-7]+)?([0-7_]*[0-7]+)? {
                                 debug(" Octal:   [ %s ]\n", yytext);
 
                                 yylval.val = otol(yytext + 1 + (yytext[1] == 'c' || yytext[1] == 'o' ? 1 : 0));
@@ -81,10 +81,10 @@ extern  int lineno;
                                 return(NUMBER);
                                 }
 
-[0-9]+[0-9]*                   {
+[0-9]+([0-9_]*[0-9]+)?          {
                                 debug(" Decimal: [ %s ]\n", yytext);
 
-                                yylval.val = (double) atoll(yytext);
+                                yylval.val = (double) dtoll(yytext);
 
                                 return(NUMBER);
                                 }

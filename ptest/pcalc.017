@@ -1,0 +1,4 @@
+// Make sure decimal constants work
+
+1_2_3_4
+9_______1

@@ -107,6 +107,11 @@ Values:\n\
     0b...   Binary number\n\
     0y...   Binary number\n\
     ...     Decimal number\n\
+Separators (for readability):\n\
+    0xFFFF_AAAA\n\
+    0o777_555\n\
+    0b1100_1010\n\
+    12_23_45_67\n\
 \n\
 ");
 }
