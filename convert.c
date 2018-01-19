@@ -140,6 +140,7 @@ unsigned long long dtoll(const char *str)
 			sum *= 10;
 			sum += (*str - '0');
 			break;
+		case ',':
 		case '_':
 			break;
 		default:
