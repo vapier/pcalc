@@ -39,7 +39,7 @@ Constants: (case sensitive)\n\
     PI      E       GAMMA   DEG     PHI   \n\
 \n\
 Values:\n\
-    0x...   0b...   0y...   0c...   0o...\n\
+    0x...   0o...   0c...   0b...   0y...\n\
 \n\
 ");
 }
@@ -100,10 +100,10 @@ Constants:\n\
 \n\
 Values:\n\
     0x...   Hex number\n\
+    0o...   Octal number\n\
+    0c...   Octal number\n\
     0b...   Binary number\n\
     0y...   Binary number\n\
-    0c...   Octal number\n\
-    0o...   Octal number\n\
     ...     Decimal number\n\
 \n\
 ");
