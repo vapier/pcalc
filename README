@@ -24,6 +24,7 @@ Specification:
     0x1234              hexadecimal
     0c1234              octal
     0o1234              octal
+    0b0101              binary
     0y0101              binary
     123456              decimal
 
