@@ -29,6 +29,7 @@
 /* -------- Includes:  --------------------------------------------------- */
 
 #include "convert.h"
+#include "debug.h"
 
 /* -------- Defines: ----------------------------------------------------- */
 
@@ -138,9 +139,7 @@ unsigned int hextoi(char *str, int lim)
         sum += val;
         str++;  lim--;
         }
-    #ifdef PG_DEBUG
-    printf("SUM: %x\n", sum);
-    #endif
+    debug("SUM: %x\n", sum);
     return(sum);
 }
 
@@ -168,9 +167,7 @@ unsigned int dectoi(char *str, int lim)
         sum += val;
         str++;  lim--;
         }
-    #ifdef PG_DEBUG
-    printf("DEC SUM: %x\n", sum);
-    #endif
+    debug("DEC SUM: %x\n", sum);
     return(sum);
 }
 
@@ -189,9 +186,7 @@ unsigned int hexlen(char *str)
 
         str++; sum++;
         }
-    #ifdef PG_DEBUG
-    printf("LEN: %x\n", sum);
-    #endif
+    debug("LEN: %x\n", sum);
     return(sum);
 }
 
@@ -210,9 +205,7 @@ unsigned int declen(char *str)
 
         str++; sum++;
         }
-    #ifdef PG_DEBUG
-    printf("LEN: %x\n", sum);
-    #endif
+    debug("LEN: %x\n", sum);
     return(sum);
 }
 

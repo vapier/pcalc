@@ -7,6 +7,7 @@
 #include "ctype.h"
 #include "string.h"
 
+#include "debug.h"
 #include "hocdecl.h"
 #include "symbol.h"
 #include "pcalc.h"
@@ -17,8 +18,6 @@
 
 extern YYSTYPE yylval;
 extern  int lineno;
-
-//#define TEST
 
 %}
 
@@ -59,9 +58,7 @@ extern  int lineno;
                                 }
 
 0[xX][0-9a-fA-F]+[0-9a-fA-F]* {
-                                #ifdef TEST
-                                printf(" Hexadec: [ %s ]\n", yytext);
-                                #endif
+                                debug(" Hexadec: [ %s ]\n", yytext);
 
                                 yylval.val = (double) hextoll(yytext + 2);
 
@@ -69,9 +66,7 @@ extern  int lineno;
                                 }
 
 0[by][01]+[01]*                 {
-                                #ifdef TEST
-                                printf(" Binary:  [ %s ]\n", yytext);
-                                #endif
+                                debug(" Binary:  [ %s ]\n", yytext);
 
                                 yylval.val = bintol(yytext + 2);
 
@@ -79,9 +74,7 @@ extern  int lineno;
                                 }
 
 0[co]?[0-7]+[0-7]*              {
-                                #ifdef TEST
-                                printf(" Octal:   [ %s ]\n", yytext);
-                                #endif
+                                debug(" Octal:   [ %s ]\n", yytext);
 
                                 yylval.val = otol(yytext + 1 + (yytext[1] == 'c' || yytext[1] == 'o' ? 1 : 0));
 
@@ -89,9 +82,7 @@ extern  int lineno;
                                 }
 
 [0-9]+[0-9]*                   {
-                                #ifdef TEST
-                                printf(" Decimal: [ %s ]\n", yytext);
-                                #endif
+                                debug(" Decimal: [ %s ]\n", yytext);
 
                                 yylval.val = (double) atoll(yytext);
 
@@ -103,9 +94,7 @@ extern  int lineno;
 [0-9]+[dDeE][+-]?[0-9]+ |
 [0-9]+"."[0-9]*[dDeE][+-]?[0-9]+ |
 "."[0-9]+[dDeE][+-]?[0-9]+     {
-                                #ifdef TEST
-                                printf(" Decimal: [ %s ]\n", yytext);
-                                #endif
+                                debug(" Decimal: [ %s ]\n", yytext);
 
                                 yylval.val = (double) atof(yytext);
 
@@ -115,9 +104,7 @@ extern  int lineno;
 \".*\"                          {
                                 Symbol *sp;
 
-                                #ifdef TEST
-                                printf(" string: [ %s ]\n", yytext);
-                                #endif
+                                debug(" string: [ %s ]\n", yytext);
 
                                 sp  = lookup_sym(yytext);
 
@@ -142,9 +129,7 @@ extern  int lineno;
 
 
 \/\/.*                          {
-                                #ifdef TEST
-                                printf(" Comment: [ %s ]\n", yytext);
-                                #endif
+                                debug(" Comment: [ %s ]\n", yytext);
 
                                 //return(COMM);
                                 }
@@ -152,9 +137,7 @@ extern  int lineno;
 [a-zA-Z_]+[a-zA-Z0-9_]*         {
                                 Symbol *sp;
 
-                                #ifdef TEST
-                                printf(" Ident:   [ %s ]\n", yytext);
-                                #endif
+                                debug(" Ident:   [ %s ]\n", yytext);
 
                                 sp  = lookup_sym(yytext);
 
@@ -164,25 +147,19 @@ extern  int lineno;
 
                                     if(sp->type == BUILTIN)
                                         {
-                                        #ifdef TEST
-                                        printf("Bultin: %s\n", sp->name );
-                                        #endif
+                                        debug("Bultin: %s\n", sp->name);
 
                                         return(BUILTIN);
                                         }
                                     else if(sp->type == IBUILTIN)
                                         {
-                                        #ifdef TEST
-                                        printf("Bultin: %s\n", sp->name );
-                                        #endif
+                                        debug("Bultin: %s\n", sp->name);
 
                                         return(IBUILTIN);
                                         }
                                     else if(sp->type == VAR)
                                         {
-                                        #ifdef TEST
-                                        printf("Var: %s\n", sp->name );
-                                        #endif
+                                        debug("Var: %s\n", sp->name);
 
                                         return(VAR);
                                         }
@@ -207,17 +184,13 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                         install_sym(yytext, STRVAR, 0.0);
                                     }
 
-                                #ifdef TEST
-                                printf(" Stringvar: [ %s ]\n", yytext);
-                                #endif
+                                debug(" Stringvar: [ %s ]\n", yytext);
 
                                 return(STRVAR);
                                 }
 
 [\r]                            {
-                                #ifdef TEST
-                                printf(" Comment: [ %s ]\n", yytext);
-                                #endif
+                                debug(" Comment: [ %s ]\n", yytext);
 
                                 lineno++;
                                 //return(COMM);
@@ -226,9 +199,7 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
 [\n]                            {   }
 
 [ \t]+                          {
-                                #ifdef TEST
-                                //printf(" White:   [ %s ]\n", yytext);
-                                #endif
+                                //debug(" White:   [ %s ]\n", yytext);
 
                                 //return(WHITE);
                                 }
