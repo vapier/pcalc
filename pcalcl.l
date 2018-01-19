@@ -19,7 +19,6 @@ extern YYSTYPE yylval;
 extern  int lineno;
 
 //#define TEST
-#define RET_EACH
 
 %}
 
@@ -27,50 +26,36 @@ extern  int lineno;
 
 "STORE" |
 "store"                         {
-                                #ifdef RET_EACH
                                 return(STORE);
-                                #endif
                                 }
 "RESTORE" |
 "restore"                       {
-                                #ifdef RET_EACH
                                 return(RESTORE);
-                                #endif
                                 }
 "TO" |
 "to"                            {
-                                #ifdef RET_EACH
                                 return(TO);
-                                #endif
                                 }
 
 "FROM" |
 "from"                          {
-                                #ifdef RET_EACH
                                 return(FROM);
-                                #endif
                                 }
 
 
 "OR" |
 "or"                            {
-                                #ifdef RET_EACH
                                 return('|');
-                                #endif
                                 }
 
 "XOR" |
 "xor"                           {
-                                #ifdef RET_EACH
                                 return('X');
-                                #endif
                                 }
 
 "AND" |
 "and"                           {
-                                #ifdef RET_EACH
                                 return('&');
-                                #endif
                                 }
 
 0[xX][0-9a-fA-F]+[0-9a-fA-F]* {
@@ -80,9 +65,7 @@ extern  int lineno;
 
                                 yylval.val = (double) hextoll(yytext + 2);
 
-                                #ifdef RET_EACH
                                 return(NUMBER);
-                                #endif
                                 }
 
 0[by][01]+[01]*                 {
@@ -92,9 +75,7 @@ extern  int lineno;
 
                                 yylval.val = bintol(yytext + 2);
 
-                                #ifdef RET_EACH
                                 return(NUMBER);
-                                #endif
                                 }
 
 0[co]?[0-7]+[0-7]*              {
@@ -104,9 +85,7 @@ extern  int lineno;
 
                                 yylval.val = otol(yytext + 1 + (yytext[1] == 'c' || yytext[1] == 'o' ? 1 : 0));
 
-                                #ifdef RET_EACH
                                 return(NUMBER);
-                                #endif
                                 }
 
 [0-9]+[0-9]*                   {
@@ -116,9 +95,7 @@ extern  int lineno;
 
                                 yylval.val = (double) atoll(yytext);
 
-                                #ifdef RET_EACH
                                 return(NUMBER);
-                                #endif
                                 }
 
 "."[0-9]+ |
@@ -132,9 +109,7 @@ extern  int lineno;
 
                                 yylval.val = (double) atof(yytext);
 
-                                #ifdef RET_EACH
                                 return(NUMBER);
-                                #endif
                                 }
 
 \".*\"                          {
@@ -162,9 +137,7 @@ extern  int lineno;
                                     yylval.sym = sp;
                                     }
 
-                                #ifdef RET_EACH
                                 return(STR);
-                                #endif
                                 }
 
 
@@ -173,9 +146,7 @@ extern  int lineno;
                                 printf(" Comment: [ %s ]\n", yytext);
                                 #endif
 
-                                #ifdef RET_EACH
                                 //return(COMM);
-                                #endif
                                 }
 
 [a-zA-Z_]+[a-zA-Z0-9_]*         {
@@ -197,9 +168,7 @@ extern  int lineno;
                                         printf("Bultin: %s\n", sp->name );
                                         #endif
 
-                                        #ifdef RET_EACH
                                         return(BUILTIN);
-                                        #endif
                                         }
                                     else if(sp->type == IBUILTIN)
                                         {
@@ -207,9 +176,7 @@ extern  int lineno;
                                         printf("Bultin: %s\n", sp->name );
                                         #endif
 
-                                        #ifdef RET_EACH
                                         return(IBUILTIN);
-                                        #endif
                                         }
                                     else if(sp->type == VAR)
                                         {
@@ -217,9 +184,7 @@ extern  int lineno;
                                         printf("Var: %s\n", sp->name );
                                         #endif
 
-                                        #ifdef RET_EACH
                                         return(VAR);
-                                        #endif
                                         }
                                     }
                                 else
@@ -228,9 +193,7 @@ extern  int lineno;
                                     yylval.sym = sp;
                                     //yylval.sym->u.val = 0.0;
 
-                                    #ifdef RET_EACH
                                     return(VAR);
-                                    #endif
                                     }
                                 }
 
@@ -248,9 +211,7 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                 printf(" Stringvar: [ %s ]\n", yytext);
                                 #endif
 
-                                #ifdef RET_EACH
                                 return(STRVAR);
-                                #endif
                                 }
 
 [\r]                            {
@@ -258,10 +219,8 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                 printf(" Comment: [ %s ]\n", yytext);
                                 #endif
 
-                                #ifdef RET_EACH
                                 lineno++;
                                 //return(COMM);
-                                #endif
                                 }
 
 [\n]                            {   }
@@ -271,159 +230,107 @@ $[a-zA-Z_]+[a-zA-Z0-9_]*       {
                                 //printf(" White:   [ %s ]\n", yytext);
                                 #endif
 
-                                #ifdef RET_EACH
                                 //return(WHITE);
-                                #endif
                                 }
 
 ";"                             {
-                                #ifdef RET_EACH
                                 return(';');
-                                #endif
                                 }
 
 "{"                             {
-                                #ifdef RET_EACH
                                 return('{');
-                                #endif
                                 }
 
 "}"                             {
-                                #ifdef RET_EACH
                                 return('}');
-                                #endif
                                 }
 
 ","                             {
-                                #ifdef RET_EACH
                                 return(',');
-                                #endif
                                 }
 
 ":"                             {
-                                #ifdef RET_EACH
                                 return(':');
-                                #endif
                                 }
 
 "="                             {
-                                #ifdef RET_EACH
                                 return('=');
-                                #endif
                                 }
 
 "("                             {
-                                #ifdef RET_EACH
                                 return('(');
-                                #endif
                                 }
 
 ")"                             {
-                                #ifdef RET_EACH
                                 return(')');
-                                #endif
                                 }
 
 "["                             {
-                                #ifdef RET_EACH
                                 return('[');
-                                #endif
                                 }
 
 "]"                             {
-                                #ifdef RET_EACH
                                 return(']');
-                                #endif
                                 }
 
 "."                             {
-                                #ifdef RET_EACH
                                 return('.');
-                                #endif
                                 }
 
 "&"                             {
-                                #ifdef RET_EACH
                                 return('&');
-                                #endif
                                 }
 
 "!"                             {
-                                #ifdef RET_EACH
                                 return('!');
-                                #endif
                                 }
 
 "~"                             {
-                                #ifdef RET_EACH
                                 return('~');
-                                #endif
                                 }
 
 "-"                             {
-                                #ifdef RET_EACH
                                 return('-');
-                                #endif
                                 }
 
 "+"                             {
-                                #ifdef RET_EACH
                                 return('+');
-                                #endif
                                 }
 
 "*"                             {
-                                #ifdef RET_EACH
                                 return('*');
-                                #endif
                                 }
 
 "/"                             {
-                                #ifdef RET_EACH
                                 return('/');
-                                #endif
                                 }
 
 "%"                             {
-                                #ifdef RET_EACH
                                 return('%');
-                                #endif
                                 }
 
 "<<"                            {
-                                #ifdef RET_EACH
                                 return('<');
-                                #endif
                                 }
 
 ">>"                            {
-                                #ifdef RET_EACH
                                 return('>');
-                                #endif
                                 }
 
 "^"                             {
-                                #ifdef RET_EACH
                                 return('^');
-                                #endif
                                 }
 
 "|"                             {
-                                #ifdef RET_EACH
                                 return('|');
-                                #endif
                                 }
 
 "?"                             {
-                                #ifdef RET_EACH
                                 return('?');
-                                #endif
                                 }
 
 .                              {
-                                #ifdef RET_EACH
                                 //return(yytext[0]);
-                                #endif
                                }                    /* ignore all the rest */
 
 %%
