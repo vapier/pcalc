@@ -252,7 +252,7 @@ int     main(int argc, char *argv[])
 /*-------------------------------------------------------------------------
 **  EXECERROR
 */
-void    execerror( char *s, char *t)
+void execerror(const char *s, const char *t)
 {
     warning( s, t) ;
     longjmp( begin, 0) ;
@@ -269,9 +269,9 @@ void    fpecatch( int aa)
 /*-------------------------------------------------------------------------
 **  YYERROR
 */
-void    yyerror( char *s)                      /* called by yacc syntax error */
+void yyerror(const char *s)                      /* called by yacc syntax error */
 {
-    warning( s, (char *) 0) ;
+    warning(s, NULL);
     exit(0);
 }
 
@@ -279,7 +279,7 @@ void    yyerror( char *s)                      /* called by yacc syntax error */
 **  WARNING
 */
 
-void    warning( char *s, char *t)
+void warning(const char *s, const char *t)
 {
     fprintf( stderr, "%s: %s", progname, s) ;
 

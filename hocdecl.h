@@ -9,10 +9,10 @@
 */
 
 extern int yylex( void) ;
-extern void execerror( char *, char *) ;
+extern void execerror(const char *, const char *);
 extern void fpecatch( int ) ;
-extern void yyerror( char *) ;
-extern void warning( char *, char *) ;
+extern void yyerror(const char *);
+extern void warning(const char *, const char *);
 
 /*
 **      function in INIT.C
@@ -30,7 +30,7 @@ extern  double Exp(double x);
 extern  double Pow(double x,double y);
 extern  double integer(double x);
 extern  double Sqrt(double x);
-extern  double errcheck( double, char *) ;
+extern  double errcheck(double, const char *);
 extern  double f2c(double d);
 extern  double c2f(double d);
 extern  double in2mm(double d);

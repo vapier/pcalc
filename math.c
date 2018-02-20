@@ -42,7 +42,7 @@ double Sqrt( double x)
    return errcheck( sqrt(x), "sqrt") ;
 }
 
-double errcheck( double d, char *s)
+double errcheck(double d, const char *s)
 {
     if (errno == EDOM) {
         errno = 0 ;
