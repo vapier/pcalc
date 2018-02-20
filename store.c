@@ -13,6 +13,7 @@
 
 /* -------- System includes:  -------------------------------------------- */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -33,7 +34,7 @@ int     store(char *file, char *name, double var)
 
 {
     FILE    *fp  = NULL;
-    int     found = FALSE;
+    bool    found = false;
     int     namelen;
     char    tmp[18];
     Symbol *ms = lookup_sym("DEBUG_STORE");
@@ -62,7 +63,7 @@ int     store(char *file, char *name, double var)
 
     *work_str = 0;
     
-    while(TRUE)
+    while (1)
         {
         long pos = ftell(fp);
 
@@ -80,7 +81,7 @@ int     store(char *file, char *name, double var)
 	if(!strncmp(work_str, tmp, namelen))
             {
             fseek(fp, pos, SEEK_SET);
-            found = TRUE;
+            found = true;
             break;
             }
         if(feof(fp))
@@ -102,7 +103,7 @@ int     restore(char *file, char *name, double *var)
 
 {
     FILE    *fp  = NULL;
-    int     found = FALSE;
+    bool    found = false;
     int     namelen;
     char    tmp[18];
 
@@ -122,14 +123,14 @@ int     restore(char *file, char *name, double *var)
     if(!fp)
         return(0);
 
-    while(TRUE)
+    while (1)
         {
 	  if(!fgets(work_str, sizeof(work_str), fp))
 	    break;
 	  
 	  if(!strncmp(work_str, tmp, namelen))
             {
-	      found = TRUE;
+	      found = true;
 	      break;
             }
 	  if(feof(fp))

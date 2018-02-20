@@ -19,6 +19,7 @@
 
 /* -------- System includes:  -------------------------------------------- */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -39,7 +40,7 @@
 /* -------- Implementation: ---------------------------------------------- */
 
 /*
- * int     str_esc(char *str, char *out, int lim)
+ * bool str_esc(char *str, char *out, int lim)
  *
  * Expand escape sequence like 'C'.
  *
@@ -61,11 +62,10 @@
  *
  */
 
-unsigned int    str_esc(char *str, char *out, int lim)
-
+bool str_esc(char *str, char *out, int lim)
 {
     char    *str2 = str;
-    int     ret_val = 0;
+    bool    ret_val = false;
 
     *out = '\0';
     if(!str)
@@ -80,13 +80,13 @@ unsigned int    str_esc(char *str, char *out, int lim)
 
         if(!lim)
             {
-            ret_val = TRUE;
+            ret_val = true;
             break;
             }
         else if(str2-str+1 >= lim)
             {
             fprintf(stderr, "String too large for buffer of %i chars; truncated\n", lim-1);
-            ret_val = FALSE;
+            ret_val = false;
             *str2 = '\0';
             break;
             }

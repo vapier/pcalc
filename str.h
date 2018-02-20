@@ -1,11 +1,8 @@
 #ifndef str_defined
 #define str_defined
 
-/* -------- Macros: ------------------------------------------------------ */
+#include <stdbool.h>
 
-
-/* -------- Protos ------------------------------------------------------- */
-
-unsigned int    str_esc(char *str, char *out, int lim);
+bool str_esc(char *str, char *out, int lim);
 
 #endif

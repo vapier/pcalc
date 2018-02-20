@@ -17,6 +17,7 @@
 
   /* -------- System includes:  -------------------------------------------- */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -173,16 +174,16 @@ int     main(int argc, char *argv[])
         }
     if (!argv[2] && argv[1][1] == '\0')
         {
-        int helped = FALSE;
+        bool helped = false;
         char c = *argv[1];
         if (c == 'e' || c == 'f')
-            helped = TRUE, funchelp();
+            helped = true, funchelp();
         if (c == 'e' || c == 'l')
-            helped = TRUE, cbhelp();
+            helped = true, cbhelp();
         if (c == 'e' || c == 'o')
-            helped = TRUE, ophelp();
+            helped = true, ophelp();
         if (c == 'e' || c == 'c')
-            helped = TRUE, conshelp();
+            helped = true, conshelp();
         if (helped)
             {
             help_help();

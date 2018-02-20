@@ -4,9 +4,6 @@
 **              in K&P p246 ch8.
 */
 
-#define TRUE 1
-#define FALSE 0
-
 /*
 **      functions in HOC3.C
 */
