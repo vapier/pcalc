@@ -30,7 +30,6 @@ extern  double Exp(double x);
 extern  double Pow(double x,double y);
 extern  double integer(double x);
 extern  double Sqrt(double x);
-extern  double errcheck(double, const char *);
 extern  double f2c(double d);
 extern  double c2f(double d);
 extern  double in2mm(double d);

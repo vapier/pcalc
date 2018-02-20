@@ -8,8 +8,18 @@
 #include <errno.h>
 #include "hocdecl.h"
 
-double errcheck() ;
+static double errcheck(double d, const char *s)
+{
+	if (errno == EDOM) {
+		errno = 0;
+		execerror(s, "argument out of domain");
+	} else if (errno == ERANGE) {
+		errno = 0;
+		execerror(s, "result out of range");
+	}
 
+	return d;
+}
 
 double Log( double x)
 
@@ -42,60 +52,38 @@ double Sqrt( double x)
    return errcheck( sqrt(x), "sqrt") ;
 }
 
-double errcheck(double d, const char *s)
-{
-    if (errno == EDOM) {
-        errno = 0 ;
-        execerror( s, "argument out of domain") ;
-    }
-    else if (errno == ERANGE) {
-        errno = 0 ;
-        execerror(s, "result out of range") ;
-    }
-
-    return d ;
-}
-
-    double ret_val = 0.0;
-
+/* Fahrenheit to Celsius */
 double f2c(double d)
-
 {
-    ret_val = (5 * (d-32)) / 9;
-    return ret_val;
+	return (5 * (d - 32)) / 9;
 }
 
+/* Celsius to Fahrenheit */
 double c2f(double d)
-
 {
-    ret_val = (d * 9)/5 + 32;
-    return ret_val;
+	return (d * 9) / 5 + 32;
 }
 
+/* Inches to millimeter */
 double in2mm(double d)
-
 {
-    ret_val = (d * 25.4);
-    return ret_val;
+	return d * 25.4;
 }
 
+/* Millimeter to inches */
 double mm2in(double d)
-
 {
-    ret_val = (d / 25.4);
-    return ret_val;
+	return d / 25.4;
 }
 
+/* Pounds to kilograms */
 double po2kg(double d)
-
 {
-    ret_val = ((d * 453.592) / 1000);
-    return ret_val;
+	return (d * 453.592) / 1000;
 }
 
+/* Kilograms to pounds */
 double kg2po(double d)
-
 {
-    ret_val = ((d * 1000) / 453.592);
-    return ret_val;
+	return (d * 1000) / 453.592;
 }
