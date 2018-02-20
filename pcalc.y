@@ -37,7 +37,6 @@
 
   int     fNibble = 0;
   int     fOctal = 0;
-  int     fSilent = 0;
 
   extern  FILE * yyin ;
 
@@ -314,8 +313,6 @@ int     parse_comline(int argc, char *argv[])
                 "\nOptions:\n"
                 "  -n      nibble mode (space out binary display)\n"
                 "  -o      include octal in output\n"
-                "  -s,-S   silent mode\n"
-                "  -b,-B   silent mode\n"
                 "  -v      version\n"
                 "  -h      help\n"
                 "\n");
@@ -328,18 +325,6 @@ int     parse_comline(int argc, char *argv[])
 
                 case 'o' :          /* octal mode */
                     fOctal = 1;
-                    j++;
-                    break;
-
-                case 'S' :          /* quiet mode */
-                case 's' :
-                    fSilent = 1;
-                    j++;
-                    break;
-
-                case 'B' :
-                case 'b' :
-                    fSilent = 1;
                     j++;
                     break;
 
