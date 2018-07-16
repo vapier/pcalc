@@ -62,9 +62,9 @@
  *
  */
 
-bool str_esc(char *str, char *out, int lim)
+bool str_esc(const char *str, char *out, int lim)
 {
-    char    *str2 = str;
+    const char *str2 = str;
     bool    ret_val = false;
 
     *out = '\0';
@@ -87,7 +87,6 @@ bool str_esc(char *str, char *out, int lim)
             {
             fprintf(stderr, "String too large for buffer of %i chars; truncated\n", lim-1);
             ret_val = false;
-            *str2 = '\0';
             break;
             }
         switch(*str2)

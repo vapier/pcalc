@@ -153,8 +153,7 @@ unsigned long long dtoll(const char *str)
 	return sum;
 }
 
-unsigned int hextoi(char *str, int lim)
-
+unsigned int hextoi(const char *str, int lim)
 {
     unsigned int sum = 0;
     char chh, val;
@@ -185,9 +184,7 @@ unsigned int hextoi(char *str, int lim)
     return(sum);
 }
 
-
-unsigned int dectoi(char *str, int lim)
-
+unsigned int dectoi(const char *str, int lim)
 {
     unsigned int sum = 0;
     char chh, val;
@@ -213,9 +210,7 @@ unsigned int dectoi(char *str, int lim)
     return(sum);
 }
 
-
-unsigned int hexlen(char *str)
-
+unsigned int hexlen(const char *str)
 {
     unsigned int sum = 0;
 
@@ -232,9 +227,7 @@ unsigned int hexlen(char *str)
     return(sum);
 }
 
-
-unsigned int declen(char *str)
-
+unsigned int declen(const char *str)
 {
     unsigned int sum = 0;
 

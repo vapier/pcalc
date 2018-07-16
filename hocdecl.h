@@ -38,10 +38,10 @@ extern  double po2kg(double d);
 extern  double kg2po(double d);
 
 /*
-**      functions in FUNC.C
+**      functions in FUNCT.C
 */
 
-extern  int     print(double);
-extern  int     echo(char *str);
-extern  int     echo_nl(char *str);
-extern  int     ddate(char *str);
+extern  int print(double);
+extern  int echo(const char *str);
+extern  int echo_nl(const char *str);
+extern  int ddate(const char *str);

@@ -3,6 +3,6 @@
 
 #include <stdbool.h>
 
-bool str_esc(char *str, char *out, int lim);
+bool str_esc(const char *str, char *out, int lim);
 
 #endif

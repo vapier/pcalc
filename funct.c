@@ -43,21 +43,14 @@ int     print(double ee)
     return(0);
 }
 
-int     echo(char *str)
-
+int echo(const char *str)
 {
-    if(str)
-        {
-        str_esc(str, work_str, sizeof(work_str));
-        printf("%s\n", work_str);
-
-        //printf("%s\n", str);
-        }
+    echo_nl(str);
+    printf("\n");
     return(0);
 }
 
-int     echo_nl(char *str)
-
+int echo_nl(const char *str)
 {
     if(str)
         {
@@ -69,11 +62,7 @@ int     echo_nl(char *str)
     return(0);
 }
 
-
-/* the date function */
-
-int     ddate(char *str)
-
+int ddate(const char *str)
 {
     struct tm *loc_time;
     time_t lt;
