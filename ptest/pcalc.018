@@ -1,0 +1,31 @@
+// Make sure memory suffix works
+
+1_0K
+1G / 1024
+1,024K
+2T
+3G
+0xaM
+1M-5K
+1G + 128*1M - 16K
+1M + 1024
+1KB
+1K
+1k
+1KiB
+1M
+1m
+1MiB
+1G
+1g
+1GiB
+1T
+1t
+1TiB
+1P
+1p
+1PiB
+1EiB
+
+//test euler constant (potential conflict with E suffix)
+E*1KB

@@ -50,6 +50,7 @@
     Symbol  *sym ;                                 /* symbol table ptr     */
 }
 
+%token  <val>   MEMORY_SIZE
 %token  <val>   NUMBER
 %token  <sym>   VAR BUILTIN IBUILTIN  UNDEF STR
 %token  <sym>   TO FROM STORE RESTORE STRVAR
@@ -110,6 +111,7 @@ asgn:   VAR '=' expr                { $$ = $1->u.val = $3 ; $1->type = VAR ; }
 
 expr:       NUMBER
         |   VAR                     { $$ = $1->u.val ; }
+        |   NUMBER MEMORY_SIZE      { $$ = $1 * $2 ; }
         |   BUILTIN '(' expr ')'    { $$ = (*($1->u.ptr))($3) ; }
         |   BUILTIN   expr          { $$ = (*($1->u.ptr))($2) ; }
         |   '~' expr                { $$ = ~((long)$2) ; }
