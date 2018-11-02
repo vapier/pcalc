@@ -104,7 +104,7 @@ KB                              {
                                 return(MEMORY_SIZE);
                                 }
 
-[0-9]+([0-9_,]*[0-9]+)?   {
+[0-9]+([0-9_,]*[0-9]+)?         {
                                 debug(" Decimal: [ %s ]\n", yytext);
 
                                 yylval.val = (double) dtoll(yytext);
