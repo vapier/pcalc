@@ -1,0 +1,24 @@
+# Travis build integration.
+# https://docs.travis-ci.com/
+
+language: c
+# Order here matters for implicit matrix generation and coverity scan.
+# See travis/main.sh for details.
+compiler:
+  - gcc
+  - clang
+
+sudo: false
+
+# Order here matters; see compiler comment above.
+os:
+  - linux
+#  - osx
+
+script: ./travis/main.sh
+
+addons:
+  apt:
+    packages:
+    - autoconf
+    - automake
