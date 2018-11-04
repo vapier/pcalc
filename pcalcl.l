@@ -81,18 +81,32 @@ extern  int lineno;
                                 return(NUMBER);
                                 }
 
-KB                              {
+[KMGTPEZY]B                     {
                                 debug(" Memory size: [ %s ]\n", yytext);
-                                yylval.val = 1000;
+                                yylval.val = 1;
+                                switch (yytext[0]) {
+                                  default: break;
+                                  case 'Y': yylval.val *= 1000;
+                                  case 'Z': yylval.val *= 1000;
+                                  case 'E': yylval.val *= 1000;
+                                  case 'P': yylval.val *= 1000;
+                                  case 'T': yylval.val *= 1000;
+                                  case 'G': yylval.val *= 1000;
+                                  case 'M': yylval.val *= 1000;
+                                  case 'K': yylval.val *= 1000;
+                                }
+
                                 return(MEMORY_SIZE);
                                 }
 
-[KkMmGgTtPp] |
-[KMGTPE](iB)                   {
+[KkMmGgTtPpZzYy] |              //E is intentionally omitted as it conflicts with Euler constant.
+[KMGTPEZY](iB)                  {
                                 debug(" Memory size: [ %s ]\n", yytext);
                                 yylval.val = 1;
                                 switch (tolower(yytext[0])) {
                                   default: break;
+                                  case 'y': yylval.val *= 1024;
+                                  case 'z': yylval.val *= 1024;
                                   case 'e': yylval.val *= 1024;
                                   case 'p': yylval.val *= 1024;
                                   case 't': yylval.val *= 1024;

@@ -109,13 +109,11 @@ Values:\n\
     ...     Decimal number\n\
 \n\
 Suffixes (for common memory sizes):\n\
-    ...K, ...k, ...KiB    Kilobyte (1024 bytes)\n\
+    ...K, ...k, ...KiB    Kibibyte (1024 bytes)\n\
     ...KB                 Kilobyte (1000 bytes)\n\
-    ...M, ...m, ...MiB    Megabyte\n\
-    ...G, ...g, ...GiB    Gigabyte\n\
-    ...T, ...t, ...TiB    Terabyte\n\
-    ...P, ...p, ...PiB    Petabyte\n\
-    ...EiB                Exabyte\n\
+    M/G/T/P/Z/Y suffixes are similarly supported.\n\
+    For exbibyte use EiB.\n\
+    For exabyte use EB.\n\
 \n\
 Separators (for readability):\n\
     0xFFFF_AAAA\n\
