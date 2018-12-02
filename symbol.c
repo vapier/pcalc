@@ -144,7 +144,7 @@ void    dump_sym(void)
  * find s in symbol table
  */
 
-Symbol  *lookup_sym(char *s)
+Symbol *lookup_sym(const char *s)
 
 {
     Symbol *sp ;
@@ -160,7 +160,7 @@ Symbol  *lookup_sym(char *s)
 **  INSTALL -   install symbol in table
 */
 
-Symbol  *install_sym(char *s, int t, double d)
+Symbol *install_sym(const char *s, int t, double d)
 
 {
     Symbol *sp ;

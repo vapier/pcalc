@@ -23,8 +23,8 @@ typedef struct Symbol {    /* symbol table entry */
 
 void    init_sym(void);
 void    dump_sym(void);
-Symbol  *lookup_sym(char *s);
-Symbol  *install_sym(char *s, int t, double d);
+Symbol *lookup_sym(const char *s);
+Symbol *install_sym(const char *s, int t, double d);
 char    *emalloc(unsigned n);
 
 #endif
