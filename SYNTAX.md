@@ -1,23 +1,4 @@
-                                PCALC
-
-Programmer's calculator,  command line utility. 
-
-There was always a loophole when it came to a need to covert between
-hexadecimal / decimal / octal / binary.
-
-Especially if it involved an operation like 0x1234 + 0x20
-It took a lot of hard work, and mostly a good pocket calculator.
-
-Main features:
-
-     o Full math parser, parentheses, add, sub, mult, div, exponential
-     o Automatic conversion between HEX DEC OCT BIN numbers
-     o Mixing different bases in one expression
-     o Definable variables
-     o Math constants (E PI ...)
-     o Built in math functions (sin/cos/sqrt ...)
-
-Specification:
+# pcalc syntax & specification
 
  Number specification:
 
@@ -101,58 +82,3 @@ The result is output in 3 parts:
 
 If the number is out of range from the HEX and BIN numbers, the
 truncated numbers are displayed.
-
-Examples:
-
-(see also the ./ptest directory)
---------------------------------------------------------------------------
-
-c:>pcalc 0x300
-
-	 768         0x300       0y1100000000
-
---------------------------------------------------------------------------
-
-c:>pcalc '0x300 + 3 * 3'
-
-	 777             0x309           0y1100001001
-
-Note: shell expansion on the '*' char required the single quote
-
---------------------------------------------------------------------------
-
-c:>pcalc sqrt 2
-
-	 1.4142136   0x1         0y1
-
---------------------------------------------------------------------------
-
-c:>pcalc sqrt(2)
-
-    1.4142136   0x1         0y1
-
---------------------------------------------------------------------------
-
-c:>pcalc 0x12 or 23
-
-    23          0x17        0y10111
-
---------------------------------------------------------------------------
-
-To execute a calculation script from a file, precede the file name with the
-character '@'.
-
-Example:
-
-pcalc @pcalc.001
-
-Dirty:
-
-This project was constructed in a 'quick and dirty' schedule, please
-forgive missing parts etc ...
-
-Feedback:
-
-Please send email about updates/ports/suggestions to
-
-https://github.com/vapier/pcalc/issues
