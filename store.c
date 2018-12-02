@@ -30,7 +30,7 @@
 
 static char    work_str[128];
 
-int     store(char *file, char *name, double var)
+int store(const char *file, const char *name, double var)
 
 {
     FILE    *fp  = NULL;
@@ -99,7 +99,7 @@ int     store(char *file, char *name, double var)
 }
 
 
-int     restore(char *file, char *name, double *var)
+int restore(const char *file, const char *name, double *var)
 
 {
     FILE    *fp  = NULL;
