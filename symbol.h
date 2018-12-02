@@ -25,6 +25,5 @@ void    init_sym(void);
 void    dump_sym(void);
 Symbol *lookup_sym(const char *s);
 Symbol *install_sym(const char *s, int t, double d);
-char    *emalloc(unsigned n);
 
 #endif

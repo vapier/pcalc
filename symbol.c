@@ -165,10 +165,13 @@ Symbol *install_sym(const char *s, int t, double d)
 {
     Symbol *sp ;
 
-    sp = (Symbol *) emalloc( sizeof( Symbol)) ;
+    sp = (Symbol *) malloc(sizeof(Symbol));
+    if (!sp)
+        execerror("out of memory", NULL);
 
-    sp->name = emalloc( strlen(s) + 1) ;
-    strcpy( sp->name, s) ;
+    sp->name = strdup(s);
+    if (!sp->name)
+        execerror("out of memory", NULL);
 
     sp->type = t ;
     sp->u.val = d ;
@@ -177,21 +180,3 @@ Symbol *install_sym(const char *s, int t, double d)
 
     return sp ;
 }
-
-/*--------------------------------------------------------------------------
-**  EMALLOC -   allocate memory for string, complain on error.
-*/
-
-char    *emalloc(unsigned n)
-
-{
- char *p ;
-
-   p = (char *) malloc( n) ;
-   if (p == (char *)0)
-      execerror("out of memory", (char *) 0) ;
-   return p ;
-}
-
-
-/* end of symbol.c */
