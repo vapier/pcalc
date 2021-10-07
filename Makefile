@@ -13,7 +13,7 @@ LEX   = flex
 CFLAGS   ?= -ggdb
 CFLAGS   += -Wall
 CPPFLAGS += -DVERSION='"$(VERSION)"'
-LDLIBS   += -lm -lfl
+LDLIBS   += -lm
 
 SRCS = pcalc pcalcl funct math symbol help store print str convert
 OBJS = $(patsubst %,%.o,$(SRCS))
