@@ -1,6 +1,6 @@
 # pcalc: The Programmer's calculator
 
-[![Build Status](https://travis-ci.org/vapier/pcalc.svg?branch=master)](https://travis-ci.org/vapier/pcalc)
+[![Build Status](https://github.com/vapier/pcalc/actions/workflows/build-test-ci.yml/badge.svg)](https://github.com/vapier/pcalc/actions/workflows/build-test-ci.yml)
 
 There was always a loophole when it came to a need to covert between
 hexadecimal / decimal / octal / binary.

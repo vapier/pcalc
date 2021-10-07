@@ -1,0 +1,58 @@
+# GitHub actions workflow.
+# https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions
+
+name: Build+Test CI
+
+on:
+  push:
+    branches: [main]
+    tags: [v*]
+  pull_request:
+    types: [opened]
+    branches: [main]
+
+jobs:
+  Linux:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        cc: [gcc, clang]
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: ${{ matrix.cc }}
+    steps:
+    - run: sudo apt-get install -y libfl-dev
+    - uses: actions/checkout@v2
+    - run: make distcheck
+
+  macOS:
+    strategy:
+      matrix:
+        os: [macos-latest]
+        cc: [clang]
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: ${{ matrix.cc }}
+    steps:
+    - run: brew install flex bison
+    - uses: actions/checkout@v2
+    - run: make
+    - run: make check
+
+  Windows:
+    strategy:
+      matrix:
+        os: [windows-latest]
+        cc: [mingw32, mingw64]
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: /c/msys64/${{ matrix.cc }}/bin/clang.exe
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - run: choco install winflexbison3
+    - uses: actions/checkout@v2
+    - run: make YACC="win_bison -ld" LEX="win_flex"
+    # Needs autom4te (from autoconf) when building from git.
+#    - run: make check
