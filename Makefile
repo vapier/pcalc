@@ -58,6 +58,7 @@ distcheck: dist
 	set -e; \
 	for t in clean all check; do $(MAKE) -C pcalc-$(VERSION) $$t; done; \
 	for t in clean all check; do env CFLAGS=-O2 $(MAKE) -C pcalc-$(VERSION) $$t; done
+	$(MAKE) -C pcalc-$(VERSION) install DESTDIR=./root/
 	rm -rf pcalc-$(VERSION)
 
 .PHONY: all check clean dist distcheck distclean install pack test
