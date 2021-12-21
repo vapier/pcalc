@@ -87,3 +87,7 @@ double kg2po(double d)
 {
 	return (d * 1000) / 453.592;
 }
+/* nth root of d*/
+double nthroot(double d , double n){
+ return Pow(d,1.0/n);
+}

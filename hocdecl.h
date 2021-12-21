@@ -36,7 +36,7 @@ extern  double in2mm(double d);
 extern  double mm2in(double d);
 extern  double po2kg(double d);
 extern  double kg2po(double d);
-
+extern  double nthroot(double d , double n);
 /*
 **      functions in FUNCT.C
 */
