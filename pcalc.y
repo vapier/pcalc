@@ -171,7 +171,7 @@ int     main(int argc, char *argv[])
 
     if(!argv[1])
         {
-        printf("Programmer's calculator by Peter Glen. Version " VERSION "\n\n");
+        printf("Programmer's calculator by Peter Glen & Mike Frysinger. Version " VERSION "\n\n");
         basehelp();
         help_help();
         exit(0);
@@ -302,7 +302,7 @@ void warning(const char *s, const char *t)
 static void print_usage(void)
 {
 	printf(
-		"Programmer's calculator by Peter Glen.\n\n"
+		"Programmer's calculator by Peter Glen & Mike Frysinger.\n\n"
 		"Usage: pcalc <stuff to calculate>\n"
 		"       pcalc @script\n"
 		"\nOptions:\n"
@@ -317,7 +317,7 @@ static void print_usage(void)
 
 static void print_version(void)
 {
-	puts("Programmer's calculator by Peter Glen. Version " VERSION);
+	puts("Programmer's calculator by Peter Glen & Mike Frysinger. Version " VERSION);
 	exit(0);
 }
 
