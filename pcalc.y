@@ -139,7 +139,7 @@ str:     STR                    { }
 
 %%
 
-int parse_comline(int argc, char *argv[]);
+static int parse_comline(int argc, char *argv[]);
 
 char *progname ;
 int lineno = 1;
@@ -298,50 +298,51 @@ void warning(const char *s, const char *t)
 /*-------------------------------------------------------------------------*/
 
 
-int     parse_comline(int argc, char *argv[])
-
+static void print_usage(void)
 {
-    int i, j = 0;
+	printf(
+		"Programmer's calculator by Peter Glen.\n\n"
+		"Usage: pcalc <stuff to calculate>\n"
+		"       pcalc @script\n"
+		"\nOptions:\n"
+		"  -n      nibble mode (space out binary display)\n"
+		"  -o      include octal in output\n"
+		"  -v      version\n"
+		"  -h      help\n"
+		"\n");
+	help_help();
+}
 
-    for(i=1; i < argc; ++i)
-        {
-        if (*argv[i] == '-')
-            {
-            switch(argv[i][1])
-                {
-                case 'h' :
-                    printf (
-                "Programmer's calculator by Peter Glen.\n\n"
-                "Usage: pcalc <stuff to calculate>\n"
-                "       pcalc @script\n"
-                "\nOptions:\n"
-                "  -n      nibble mode (space out binary display)\n"
-                "  -o      include octal in output\n"
-                "  -v      version\n"
-                "  -h      help\n"
-                "\n");
-                help_help();
+static void print_version(void)
+{
+	puts("Programmer's calculator by Peter Glen. Version " VERSION);
+	exit(0);
+}
 
-                case 'n' :          /* nibble mode */
-                    fNibble = 1;
-                    j++;
-                    break;
+int parse_comline(int argc, char *argv[])
+{
+	int o;
 
-                case 'o' :          /* octal mode */
-                    fOctal = 1;
-                    j++;
-                    break;
+	while ((o = getopt(argc, argv, ":hnov")) != -1) {
+		switch (o) {
+		case 'h':
+			print_usage();
+		case 'v':
+			print_version();
 
-                case 'v' :
-                    puts("Programmer's calculator by Peter Glen. Version " VERSION);
-                    exit(0);
-                    break;
+		case 'n':	/* nibble mode */
+			fNibble = 1;
+			break;
 
-                default:
-                    // break on first non switch entry:
-                    break;
-                }
-            }
-        }
-    return(j);
+		case 'o':	/* octal mode */
+			fOctal = 1;
+			break;
+
+		default:
+			/* Break on first unknown switch.  This allows negative numbers.  */
+			return optind - 2;
+		}
+	}
+
+	return optind - 1;
 }
