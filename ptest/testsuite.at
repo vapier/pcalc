@@ -1,6 +1,17 @@
 AT_INIT
 AT_COLOR_TESTS
 
+dnl Include useful info in testsuite.log.  Assume that 5 is the log fd, although
+dnl doesn't seem to be documented as such :).
+AT_PREPARE_TESTS([(
+printf "%s\n" \
+"## ---------------------- ##
+## testsuite shell state. ##
+## ---------------------- ##"
+set
+echo
+) >&5])
+
 m4_include(pcalc.001.at)
 m4_include(pcalc.002.at)
 m4_include(pcalc.003.at)
