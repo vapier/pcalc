@@ -62,7 +62,7 @@ extern  int lineno;
 0[xX][0-9a-fA-F]+([0-9a-fA-F_]*[0-9a-fA-F]+)? {
                                 debug(" Hexadec: [ %s ]\n", yytext);
 
-                                yylval.val = (double) hextoll(yytext + 2);
+                                yylval.val = (long double) hextoll(yytext + 2);
 
                                 return(NUMBER);
                                 }
@@ -86,7 +86,7 @@ extern  int lineno;
 [0-9]+([0-9_,]*[0-9]+)?         {
                                 debug(" Decimal: [ %s ]\n", yytext);
 
-                                yylval.val = (double) dtoll(yytext);
+                                yylval.val = (long double) dtoll(yytext);
 
                                 return(NUMBER);
                                 }
@@ -98,7 +98,7 @@ extern  int lineno;
 "."[0-9]+[dDeE][+-]?[0-9]+     {
                                 debug(" Decimal: [ %s ]\n", yytext);
 
-                                yylval.val = (double) atof(yytext);
+                                yylval.val = (long double) strtold(yytext, NULL);
 
                                 return(NUMBER);
                                 }

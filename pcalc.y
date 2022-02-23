@@ -47,7 +47,7 @@ int fPrecisionFpFrac = 16;
 %union {                                           /* stack object type    */
     int     intval ;                               /* actual value         */
     long    lngval ;                               /* actual value         */
-    double  val ;                                  /* actual value         */
+    long double  val ;                             /* actual value         */
     Symbol  *sym ;                                 /* symbol table ptr     */
 }
 
@@ -113,12 +113,12 @@ expr:       NUMBER
         |   VAR                     { $$ = $1->u.val ; }
         |   BUILTIN '(' expr ')'    { $$ = (*($1->u.ptr))($3) ; }
         |   BUILTIN   expr          { $$ = (*($1->u.ptr))($2) ; }
-        |   '~' expr                { $$ = ~((long)$2) ; }
-        |   expr '|' expr           { $$ = (long)$1 | (long)$3 ;}
-        |   expr '&' expr           { $$ = (long)$1 & (long)$3 ;}
-        |   expr 'X' expr           { $$ = (long)$1 ^ (long)$3 ;}
-        |   expr '<' expr           { $$ = (long)$1 << (long)$3 ; }
-        |   expr '>' expr           { $$ = (long)$1 >> (long)$3 ; }
+        |   '~' expr                { $$ = ~((long long)$2); }
+        |   expr '|' expr           { $$ = (long long)$1 | (long long)$3; }
+        |   expr '&' expr           { $$ = (long long)$1 & (long long)$3; }
+        |   expr 'X' expr           { $$ = (long long)$1 ^ (long long)$3; }
+        |   expr '<' expr           { $$ = (long long)$1 << (long long)$3; }
+        |   expr '>' expr           { $$ = (long long)$1 >> (long long)$3; }
         |   expr '+' expr           { $$ = $1 + $3 ; }
         |   expr '-' expr           { $$ = $1 - $3 ; }
         |   expr '*' expr           { $$ = $1 * $3 ; }
@@ -127,7 +127,7 @@ expr:       NUMBER
                                     execerror("division by zero", "") ;
                                     $$ = $1 / $3 ;
                                     }
-        |   expr '%' expr           { $$ = (long)$1 % (long)$3 ; }
+        |   expr '%' expr           { $$ = (long long)$1 % (long long)$3 ; }
         |   expr '^' expr           { $$ = Pow( $1, $3) ; }
         |   '(' expr ')'            { $$ = $2 ; }
         |   '-' expr  %prec UNARYMINUS { $$ = -$2 ; }

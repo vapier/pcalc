@@ -8,7 +8,7 @@
 #include <errno.h>
 #include "hocdecl.h"
 
-static double errcheck(double d, const char *s)
+static long double errcheck(long double d, const char *s)
 {
 	if (errno == EDOM) {
 		errno = 0;
@@ -21,69 +21,69 @@ static double errcheck(double d, const char *s)
 	return d;
 }
 
-double Log( double x)
+long double Log(long double x)
 
 {
-   return errcheck( log(x), "log") ;
+   return errcheck(logl(x), "log");
 }
 
-double Log10( double x)
+long double Log10(long double x)
 {
-   return errcheck( log10(x), "log10") ;
+   return errcheck(log10l(x), "log10");
 }
 
-double Exp( double x)
+long double Exp(long double x)
 {
-   return errcheck( exp(x), "exp") ;
+   return errcheck(expl(x), "exp");
 }
 
-double Pow( double x, double y)
+long double Pow(long double x, long double y)
 {
-   return errcheck( pow(x, y), "exponentiation") ;
+   return errcheck(powl(x, y), "exponentiation");
 }
 
-double integer( double x)
+long double integer(long double x)
 {
-   return (double)(long) x ;
+   return (long double)(long long)x;
 }
 
-double Sqrt( double x)
+long double Sqrt(long double x)
 {
-   return errcheck( sqrt(x), "sqrt") ;
+   return errcheck(sqrtl(x), "sqrt");
 }
 
 /* Fahrenheit to Celsius */
-double f2c(double d)
+long double f2c(long double d)
 {
 	return (5 * (d - 32)) / 9;
 }
 
 /* Celsius to Fahrenheit */
-double c2f(double d)
+long double c2f(long double d)
 {
 	return (d * 9) / 5 + 32;
 }
 
 /* Inches to millimeter */
-double in2mm(double d)
+long double in2mm(long double d)
 {
 	return d * 25.4;
 }
 
 /* Millimeter to inches */
-double mm2in(double d)
+long double mm2in(long double d)
 {
 	return d / 25.4;
 }
 
 /* Pounds to kilograms */
-double po2kg(double d)
+long double po2kg(long double d)
 {
 	return (d * 453.592) / 1000;
 }
 
 /* Kilograms to pounds */
-double kg2po(double d)
+long double kg2po(long double d)
 {
 	return (d * 1000) / 453.592;
 }

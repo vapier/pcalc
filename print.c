@@ -33,7 +33,7 @@ static char work_str[128];
 extern int fOctal;
 extern int fPrecisionFpFrac;
 
-void    print_num(double var)
+void    print_num(long double var)
 
 {
     Symbol *msx  = lookup_sym("DEC");
@@ -45,7 +45,7 @@ void    print_num(double var)
     
     if(msx && msx->u.val == 1)
       {
-	printf("%g" , var);
+	printf("%Lg", var);
       }
     else if(msx && msx->u.val == 2)
       {
@@ -63,7 +63,7 @@ void    print_num(double var)
     else
       {
 	long_to_bin_str((unsigned long long)var, work_str);
-	printf("\t%-16.*g", fPrecisionFpFrac, var);
+	printf("\t%-16.*Lg", fPrecisionFpFrac, var);
 	if (fOctal)
 	  printf("\t0o%-16llo", (unsigned long long)var);
 	printf("\t0x%-16llx", (unsigned long long)var);

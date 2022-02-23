@@ -6,6 +6,6 @@
 
 /* -------- Protos ------------------------------------------------------- */
 
-void    print_num(double var);
+void    print_num(long double var);
 
 #endif

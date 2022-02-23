@@ -7,7 +7,7 @@
 /* -------- Protos ------------------------------------------------------- */
 
 
-int store(const char *file, const char *name, double var);
-int restore(const char *file, const char *name, double *var);
+int store(const char *file, const char *name, long double var);
+int restore(const char *file, const char *name, long double *var);
 
 #endif

@@ -30,7 +30,7 @@
 
 static char    work_str[128];
 
-int store(const char *file, const char *name, double var)
+int store(const char *file, const char *name, long double var)
 
 {
     FILE    *fp  = NULL;
@@ -91,7 +91,7 @@ int store(const char *file, const char *name, double var)
         }
     if (found)
       {
-        sprintf(work_str, "%-16s = %-16e\n", tmp, var);
+        sprintf(work_str, "%-16s = %-16Le\n", tmp, var);
         fputs(work_str, fp);
       }
     fclose(fp);
@@ -99,7 +99,7 @@ int store(const char *file, const char *name, double var)
 }
 
 
-int restore(const char *file, const char *name, double *var)
+int restore(const char *file, const char *name, long double *var)
 
 {
     FILE    *fp  = NULL;
@@ -140,8 +140,8 @@ int restore(const char *file, const char *name, double *var)
         }
     if(found)
       {
-        float dd;
-        sscanf(work_str, "%*s = %e", &dd);
+        long double dd;
+        sscanf(work_str, "%*s = %Le", &dd);
         *var = dd;
       }
     fclose(fp);

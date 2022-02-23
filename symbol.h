@@ -11,10 +11,10 @@ typedef struct Symbol {    /* symbol table entry */
                char   *str;               /* if str */
                char   cval;               /* if VAR */
                int    ival;               /* if VAR */
-               long   lval;               /* if VAR */
-               double val;                /* if VAR */
-               double (*ptr)() ;      /* if BUILTIN */
-               int    (*iptr)() ;    /* if IBUILTIN */
+               long long  lval;           /* if VAR */
+               long double val;           /* if VAR */
+               long double (*ptr)();      /* if BUILTIN */
+               int    (*iptr)();          /* if IBUILTIN */
          } u ;
   struct Symbol *next ;
 } Symbol ;
@@ -24,6 +24,6 @@ typedef struct Symbol {    /* symbol table entry */
 void    init_sym(void);
 void    dump_sym(void);
 Symbol *lookup_sym(const char *s);
-Symbol *install_sym(const char *s, int t, double d);
+Symbol *install_sym(const char *s, int t, long double d);
 
 #endif

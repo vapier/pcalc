@@ -36,10 +36,10 @@ static char    work_str[2000];
 
 /* -------- Implementation: ---------------------------------------------- */
 
-int     print(double ee)
+int     print(long double ee)
 
 {
-    printf("val\t%-8.8g\t0x%-8lx\n", ee, (long)ee);
+    printf("val\t%-8.8Lg\t0x%-8llx\n", ee, (long long)ee);
     return(0);
 }
 

@@ -16,40 +16,40 @@ static  Symbol *symlist = (Symbol *) 0 ;
 typedef struct
         {
         char *name ;
-        double cval;
+        long double cval;
         }
         CONSTS;
 
 CONSTS consts[] =
 
 {
-        {"PI",    3.14159265358979323846},
-        {"E",     2.71828182845904523536},
-        {"GAMMA", 0.57721566490153286060},
-        {"DEG",   57.29577951308322087680},
-        {"PHI",   1.61803389974989484820},
+        {"PI",    3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117068L},
+        {"E",     2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427L},
+        {"GAMMA", 0.5772156649015328606065120900824024310421593359399235988057672348848677267776646709369470632917467495L},
+        {"DEG",   57.29577951308232087679815481410517033240547246656432154916024386120284714832155263244096899585111094L},
+        {"PHI",   1.618033988749894848204586834365638117720309179805762862135448622705260462818902449707207204189391137L},
         {NULL,    0.0}
 } ;
 
 typedef struct
         {
         char     *name ;
-        double   (*func)() ;
+        long double (*func)();
         }
         BUILTINS;
 
 BUILTINS    builtins[] =
 
 {
-        {"sin",      sin},
-        {"cos",      cos},
-        {"atan",     atan},
+        {"sin",      sinl},
+        {"cos",      cosl},
+        {"atan",     atanl},
         {"log",      Log},
         {"log10",    Log10},
         {"exp",      Exp},
         {"sqrt",     Sqrt},
         {"int",      integer},
-        {"abs",      fabs},
+        {"abs",      fabsl},
         {"f2c",      f2c},
         {"c2f",      c2f},
         {"in2mm",    in2mm},
@@ -58,15 +58,15 @@ BUILTINS    builtins[] =
         {"kg2po",    kg2po},
 
 
-        {"SIN",      sin},
-        {"COS",      cos},
-        {"ATAN",     atan},
+        {"SIN",      sinl},
+        {"COS",      cosl},
+        {"ATAN",     atanl},
         {"LOG",      Log},
         {"LOG10",    Log10},
         {"EXP",      Exp},
         {"SQRT",     Sqrt},
         {"INT",      integer},
-        {"ABS",      fabs},
+        {"ABS",      fabsl},
         {"F2C",      f2c},
         {"C2F",      c2f},
         {"IN2MM",    in2mm},
@@ -160,7 +160,7 @@ Symbol *lookup_sym(const char *s)
 **  INSTALL -   install symbol in table
 */
 
-Symbol *install_sym(const char *s, int t, double d)
+Symbol *install_sym(const char *s, int t, long double d)
 
 {
     Symbol *sp ;
