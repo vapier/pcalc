@@ -164,6 +164,10 @@ int     main(int argc, char *argv[])
 
     progname = argv[0];
 
+    /* Skip processed options to make argv parsing below easier. */
+    argv += args;
+    argc -= args;
+
     if(!argv[1])
         {
         printf("Programmer's calculator by Peter Glen. Version " VERSION "\n\n");
@@ -226,7 +230,7 @@ int     main(int argc, char *argv[])
 
         yyin = fdopen(tmpfile, "r+");
 
-        for(cnt = args+1; cnt < argc; cnt++)
+        for(cnt = 1; cnt < argc; cnt++)
             fprintf(yyin, "%s ", argv[cnt]);
         fprintf(yyin, "\n");
         //write(tmpfile, "\x1a", 1);
