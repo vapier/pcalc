@@ -14,6 +14,7 @@
 
 /* -------- System includes:  -------------------------------------------- */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -30,7 +31,7 @@
 
 static char work_str[128];
 
-extern int fOctal;
+extern bool fOctal;
 extern int fPrecisionFpFrac;
 
 void    print_num(long double var)

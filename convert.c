@@ -19,6 +19,7 @@
 
 /* -------- System includes:  -------------------------------------------- */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -250,7 +251,7 @@ unsigned int declen(const char *str)
  *
  */
 
-extern int fNibble;
+extern bool fNibble;
 
 void long_to_bin_str(unsigned long long num, char *str)
 {

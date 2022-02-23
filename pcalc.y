@@ -35,8 +35,8 @@
 #include "store.h"
 #include "print.h"
 
-  int     fNibble = 0;
-  int     fOctal = 0;
+bool fNibble = false;
+bool fOctal = false;
 int fPrecisionFpFrac = 16;
 
   extern  FILE * yyin ;
@@ -333,11 +333,11 @@ int parse_comline(int argc, char *argv[])
 			print_version();
 
 		case 'n':	/* nibble mode */
-			fNibble = 1;
+			fNibble = true;
 			break;
 
 		case 'o':	/* octal mode */
-			fOctal = 1;
+			fOctal = true;
 			break;
 
 		case 'p':
