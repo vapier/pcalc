@@ -9,9 +9,6 @@ a
 a = sin x+1
 a                              // terminal expression prints variable
 
-b = cos(x)
-b
-
 echo "PI/2"
 x
 

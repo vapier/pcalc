@@ -1,0 +1,7 @@
+// Test functions that might differ based on math lib accuracy.
+// https://github.com/vapier/pcalc/issues/6
+
+echo "COS:"
+x = PI/2
+b = cos(x)
+b
