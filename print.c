@@ -31,6 +31,7 @@
 static char work_str[128];
 
 extern int fOctal;
+extern int fPrecisionFpFrac;
 
 void    print_num(double var)
 
@@ -62,7 +63,7 @@ void    print_num(double var)
     else
       {
 	long_to_bin_str((unsigned long long)var, work_str);
-	printf("\t%-16.16g", var);
+	printf("\t%-16.*g", fPrecisionFpFrac, var);
 	if (fOctal)
 	  printf("\t0o%-16llo", (unsigned long long)var);
 	printf("\t0x%-16llx", (unsigned long long)var);

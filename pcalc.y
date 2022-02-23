@@ -37,6 +37,7 @@
 
   int     fNibble = 0;
   int     fOctal = 0;
+int fPrecisionFpFrac = 16;
 
   extern  FILE * yyin ;
 
@@ -307,6 +308,7 @@ static void print_usage(void)
 		"\nOptions:\n"
 		"  -n      nibble mode (space out binary display)\n"
 		"  -o      include octal in output\n"
+		"  -pG<#>  set precision of fractional part of floating point\n"
 		"  -v      version\n"
 		"  -h      help\n"
 		"\n");
@@ -323,7 +325,7 @@ int parse_comline(int argc, char *argv[])
 {
 	int o;
 
-	while ((o = getopt(argc, argv, ":hnov")) != -1) {
+	while ((o = getopt(argc, argv, ":hnop:v")) != -1) {
 		switch (o) {
 		case 'h':
 			print_usage();
@@ -336,6 +338,17 @@ int parse_comline(int argc, char *argv[])
 
 		case 'o':	/* octal mode */
 			fOctal = 1;
+			break;
+
+		case 'p':
+			switch (optarg[0]) {
+			case 'G':
+				fPrecisionFpFrac = atoi(optarg + 1);
+				break;
+			default:
+				fprintf(stderr, "error: unknown precision: %s\n", optarg);
+				exit(1);
+			}
 			break;
 
 		default:
