@@ -313,6 +313,7 @@ static void print_usage(void)
 		"  -h      help\n"
 		"\n");
 	help_help();
+	exit(0);
 }
 
 static void print_version(void)
@@ -329,6 +330,7 @@ int parse_comline(int argc, char *argv[])
 		switch (o) {
 		case 'h':
 			print_usage();
+
 		case 'v':
 			print_version();
 
