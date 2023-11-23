@@ -318,7 +318,6 @@ static void print_usage(void)
 static void print_version(void)
 {
 	puts("Programmer's calculator by Peter Glen & Mike Frysinger. Version " VERSION);
-	exit(0);
 }
 
 int parse_comline(int argc, char *argv[])
@@ -329,8 +328,11 @@ int parse_comline(int argc, char *argv[])
 		switch (o) {
 		case 'h':
 			print_usage();
+			exit(0);
+
 		case 'v':
 			print_version();
+		        exit(0);
 
 		case 'n':	/* nibble mode */
 			fNibble = true;
