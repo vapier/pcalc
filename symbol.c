@@ -34,7 +34,7 @@ CONSTS consts[] =
 typedef struct
         {
         char     *name ;
-        long double (*func)();
+        long double (*func)(long double);
         }
         BUILTINS;
 
@@ -80,7 +80,7 @@ BUILTINS    builtins[] =
 typedef struct
         {
         char     *name ;
-        int      (*ifunc)() ;
+        IFUNC_UNION      ifunc ;
         }
         IBUILTINS;
 
@@ -88,19 +88,18 @@ IBUILTINS    ibuiltins[] =
 
 {
 
-        {"date",     ddate},
-        {"print",    print},
-        {"echo",     echo},
-        {"_echo",    echo_nl},
+    {"date",     {ddate}},
+    {"print",    {.func_dbl = print}},
+    {"echo",     {echo}},
+    {"_echo",    {echo_nl}},
 
-        {"DATE",     ddate},
-        {"PRINT",    print},
-        {"ECHO",     echo},
-        {"_ECHO",    echo_nl},
+    {"DATE",     {ddate}},
+    {"PRINT",    {.func_dbl = print}},
+    {"ECHO",     {echo}},
+    {"_ECHO",    {echo_nl}},
 
-        {NULL,       (void *) 0}
+    {nullptr,       {nullptr}}
 } ;
-
 
 
 void    init_sym(void)

@@ -3,6 +3,12 @@
 
 /* -------- Macros: ------------------------------------------------------ */
 
+typedef union
+{
+    int (*func_str)(const char*);
+    int (*func_dbl)(long double);
+} IFUNC_UNION;
+
 typedef struct Symbol {    /* symbol table entry */
          char *name ;
          short type ;      /* VAR, BLTIN, UNDEF  */
@@ -13,8 +19,8 @@ typedef struct Symbol {    /* symbol table entry */
                int    ival;               /* if VAR */
                long long  lval;           /* if VAR */
                long double val;           /* if VAR */
-               long double (*ptr)();      /* if BUILTIN */
-               int    (*iptr)();          /* if IBUILTIN */
+               long double (*ptr)(long double);      /* if BUILTIN */
+               IFUNC_UNION   iptr;          /* if IBUILTIN */
          } u ;
   struct Symbol *next ;
 } Symbol ;

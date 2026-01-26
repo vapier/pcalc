@@ -96,10 +96,10 @@ list:
         ;
 
 
-junk:       IBUILTIN str            { (*($1->u.iptr))($2->u.str) ; }
+junk:       IBUILTIN str            { (*($1->u.iptr.func_str))($2->u.str) ; }
         |   IBUILTIN                { }
-        |   IBUILTIN VAR            { (*($1->u.iptr))($2->u.val) ; }
-        |   IBUILTIN expr           { (*($1->u.iptr))($2) ;       }
+        |   IBUILTIN VAR            { (*($1->u.iptr.func_dbl))($2->u.val) ; }
+        |   IBUILTIN expr           { (*($1->u.iptr.func_dbl))($2) ;       }
         |   STR                     { printf("%s", $1->name);}
         |   STRVAR                  { printf("%s", $1->u.str);}
         ;
