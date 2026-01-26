@@ -98,7 +98,7 @@ IBUILTINS    ibuiltins[] =
     {"ECHO",     {echo}},
     {"_ECHO",    {echo_nl}},
 
-    {nullptr,       {nullptr}}
+    {NULL,       (void *) 0}
 } ;
 
 
