@@ -1,5 +1,5 @@
 # GitHub actions workflow.
-# https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions
+# https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
 
 name: Build+Test CI
 
@@ -22,7 +22,7 @@ jobs:
       CC: ${{ matrix.cc }}
     steps:
     - run: sudo apt-get install -y libfl-dev
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
     - run: make distcheck
 
   macOS:
@@ -35,7 +35,7 @@ jobs:
       CC: ${{ matrix.cc }}
     steps:
     - run: brew install flex bison
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
     - run: make
     - run: make check
 
@@ -52,7 +52,7 @@ jobs:
         shell: bash
     steps:
     - run: choco install winflexbison3
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
     - run: make YACC="win_bison -ld" LEX="win_flex"
     # Needs autom4te (from autoconf) when building from git.
 #    - run: make check
