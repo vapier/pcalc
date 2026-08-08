@@ -48,17 +48,30 @@ jobs:
   Windows:
     strategy:
       matrix:
-        os: [windows-latest]
-        cc: [mingw32, mingw64]
-    runs-on: ${{ matrix.os }}
-    env:
-      CC: /c/msys64/${{ matrix.cc }}/bin/clang.exe
+        include:
+          - { sys: mingw64, env: x86_64 }
+          - { sys: mingw32, env: i686 }
+          - { sys: ucrt64,  env: ucrt-x86_64 }
+          - { sys: clang64, env: clang-x86_64 }
+      fail-fast: false
+    runs-on: windows-latest
     defaults:
       run:
-        shell: bash
+        shell: msys2 {0}
     steps:
-    - run: choco install winflexbison3
+    - uses: msys2/setup-msys2@v2
+      with:
+        update: true
+        msystem: ${{matrix.sys}}
+        install: >-
+          autoconf
+          bison
+          flex
+          make
+          mingw-w64-${{matrix.env}}-gcc
     - uses: actions/checkout@v7
-    - run: make YACC="win_bison -ld" LEX="win_flex"
-    # Needs autom4te (from autoconf) when building from git.
-#    - run: make check
+    - run: make CC=gcc
+    - run: make check
+    - name: Dump testsuite log
+      if: failure()
+      run: cat ptest/testsuite.log
