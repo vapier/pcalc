@@ -1,0 +1,86 @@
+# GitHub actions workflow.
+# https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+
+name: Release
+
+on:
+  push:
+    branches: [gh-actions]
+    tags: [v*]
+
+jobs:
+  Linux:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        cc: [gcc]
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: ${{ matrix.cc }}
+    steps:
+    - run: sudo apt-get install -y libfl-dev
+    - uses: actions/checkout@v7
+    - run: make dist
+    - name: Upload release tarball
+      uses: actions/upload-artifact@v7
+      with:
+        path: pcalc-*.tar.*
+        archive: false
+    - run: CFLAGS='-O2 -pipe -static -s' make
+    - run: mv pcalc pcalc-linux-x86_64
+    - name: Upload prebuilt
+      uses: actions/upload-artifact@v7
+      with:
+        path: pcalc-linux-x86_64
+        archive: false
+
+  macOS:
+    strategy:
+      matrix:
+        os: [macos-latest]
+        cc: [clang]
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: ${{ matrix.cc }}
+    steps:
+    - run: brew install autoconf bison flex
+    - uses: actions/checkout@v7
+    - run: CFLAGS='-O2 -pipe -s' make
+    - run: mv pcalc pcalc-macos-arm64
+    - name: Upload prebuilt
+      uses: actions/upload-artifact@v7
+      with:
+        path: pcalc-macos-arm64
+        archive: false
+
+  Windows:
+    strategy:
+      matrix:
+        include:
+          - { sys: mingw64, env: x86_64 }
+          - { sys: mingw32, env: i686 }
+          - { sys: ucrt64,  env: ucrt-x86_64 }
+      fail-fast: false
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - uses: msys2/setup-msys2@v2
+      with:
+        update: true
+        msystem: ${{matrix.sys}}
+        install: >-
+          autoconf
+          bison
+          flex
+          make
+          mingw-w64-${{matrix.env}}-gcc
+    - uses: actions/checkout@v7
+    - run: CFLAGS='-O2 -pipe -s' make CC=gcc
+    - run: mv pcalc.exe pcalc-windows-${{matrix.sys}}.exe
+    - name: Upload prebuilt
+      uses: actions/upload-artifact@v7
+      with:
+        path: pcalc-windows-${{matrix.sys}}.exe
+        archive: false
