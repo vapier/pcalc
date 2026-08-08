@@ -15,8 +15,9 @@ jobs:
   Linux:
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, ubuntu-26.04-arm]
         cc: [gcc, clang]
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}
@@ -26,13 +27,14 @@ jobs:
     - run: make distcheck
     - name: Dump testsuite log
       if: failure()
-      run: cat ptest/testsuite.log
+      run: cat pcalc-*/ptest/testsuite.log
 
   macOS:
     strategy:
       matrix:
         os: [macos-latest]
         cc: [clang]
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}

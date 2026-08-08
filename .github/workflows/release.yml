@@ -12,11 +12,12 @@ jobs:
   Linux:
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        cc: [gcc]
+        include:
+          - { os: ubuntu-latest,    sys: x86_64 }
+          - { os: ubuntu-26.04-arm, sys: arm64 }
     runs-on: ${{ matrix.os }}
     env:
-      CC: ${{ matrix.cc }}
+      CC: gcc
     steps:
     - run: sudo apt-get install -y libfl-dev
     - uses: actions/checkout@v7
@@ -27,11 +28,11 @@ jobs:
         path: pcalc-*.tar.*
         archive: false
     - run: CFLAGS='-O2 -pipe -static -s' make
-    - run: mv pcalc pcalc-linux-x86_64
+    - run: mv pcalc pcalc-linux-${{matrix.sys}}
     - name: Upload prebuilt
       uses: actions/upload-artifact@v7
       with:
-        path: pcalc-linux-x86_64
+        path: pcalc-linux-${{matrix.sys}}
         archive: false
 
   macOS:
