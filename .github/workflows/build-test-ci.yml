@@ -34,7 +34,7 @@ jobs:
     env:
       CC: ${{ matrix.cc }}
     steps:
-    - run: brew install flex bison
+    - run: brew install autoconf bison flex
     - uses: actions/checkout@v7
     - run: make
     - run: make check
