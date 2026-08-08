@@ -24,6 +24,9 @@ jobs:
     - run: sudo apt-get install -y libfl-dev
     - uses: actions/checkout@v7
     - run: make distcheck
+    - name: Dump testsuite log
+      if: failure()
+      run: cat ptest/testsuite.log
 
   macOS:
     strategy:
@@ -38,6 +41,9 @@ jobs:
     - uses: actions/checkout@v7
     - run: make
     - run: make check
+    - name: Dump testsuite log
+      if: failure()
+      run: cat ptest/testsuite.log
 
   Windows:
     strategy:
