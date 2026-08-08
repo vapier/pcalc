@@ -11,7 +11,7 @@
     0y0101              binary
     123456              decimal
 
-    Numbers may have underscores in them as seprators for visibility.
+    Numbers may have underscores in them as separators for visibility.
     0xFFFF_0000   0o777_555   0b1111_0000   12_34_56_78
     Decimal numbers may also have commas in them.
     1,100,234

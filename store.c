@@ -42,7 +42,7 @@ int store(const char *file, const char *name, long double var)
     if(ms && ms->u.val)
         printf("Storing: %s\n", name);
 
-    strncpy(tmp, name, 16);                     // cutted local copy
+    strncpy(tmp, name, 16);                     // cut local copy
     tmp[16] = '\0';
     namelen =  strlen(tmp);
 
@@ -112,7 +112,7 @@ int restore(const char *file, const char *name, long double *var)
     if(ms && ms->u.val )
         printf("Restoring: %s\n", name);
 
-    strncpy(tmp, name, 16);                     // cutted local copy
+    strncpy(tmp, name, 16);                     // cut local copy
     tmp[16] = '\0';
     namelen =  strlen(tmp);
 

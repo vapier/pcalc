@@ -1,7 +1,7 @@
 
 /* =====[ STR.C ]=========================================================
 
-   Description:     Convert stings.
+   Description:     Convert strings.
 
    Compiled:        MS-VC.
 

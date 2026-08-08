@@ -81,7 +81,7 @@ Operator priorities:\n\
     left   association:     '+' '-'     ADDITION/SUBTRACTION\n\
     left   association:     '*' '/' '%%' MULTIPLY/DIVIDE\n\
     left   association:     '-'         UNARY MINUS\n\
-    right  association:     '^'         EXPONENTATION\n\
+    right  association:     '^'         EXPONENTIATION\n\
 \n\
 ");
 }

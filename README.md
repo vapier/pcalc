@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/vapier/pcalc/actions/workflows/build-test-ci.yml/badge.svg)](https://github.com/vapier/pcalc/actions/workflows/build-test-ci.yml)
 
-There was always a loophole when it came to a need to covert between
+There was always a loophole when it came to a need to convert between
 hexadecimal / decimal / octal / binary.
 
 Especially if it involved an operation like 0x1234 + 0x20.

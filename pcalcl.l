@@ -149,13 +149,13 @@ extern  int lineno;
 
                                     if(sp->type == BUILTIN)
                                         {
-                                        debug("Bultin: %s\n", sp->name);
+                                        debug("Builtin: %s\n", sp->name);
 
                                         return(BUILTIN);
                                         }
                                     else if(sp->type == IBUILTIN)
                                         {
-                                        debug("Bultin: %s\n", sp->name);
+                                        debug("Builtin: %s\n", sp->name);
 
                                         return(IBUILTIN);
                                         }
