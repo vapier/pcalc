@@ -15,13 +15,12 @@ static  Symbol *symlist = (Symbol *) 0 ;
 
 typedef struct
         {
-        char *name ;
+        const char *name;
         long double cval;
         }
         CONSTS;
 
-CONSTS consts[] =
-
+static const CONSTS consts[] =
 {
         {"PI",    3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117068L},
         {"E",     2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427L},
@@ -33,13 +32,12 @@ CONSTS consts[] =
 
 typedef struct
         {
-        char     *name ;
+        const char *name;
         long double (*func)();
         }
         BUILTINS;
 
-BUILTINS    builtins[] =
-
+static const BUILTINS builtins[] =
 {
         {"sin",      sinl},
         {"cos",      cosl},
@@ -79,13 +77,12 @@ BUILTINS    builtins[] =
 
 typedef struct
         {
-        char     *name ;
+        const char *name;
         int      (*ifunc)() ;
         }
         IBUILTINS;
 
-IBUILTINS    ibuiltins[] =
-
+static const IBUILTINS ibuiltins[] =
 {
 
         {"date",     ddate},
