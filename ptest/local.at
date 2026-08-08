@@ -1,6 +1,14 @@
+dnl Path to the compiled pcalc program.
 m4_define([PCALC_BINARY], [${top_builddir:-$at_dir/..}/pcalc])
+dnl Path to the top-level source dir.
 m4_define([PCALC_FILESDIR], [${srcdir:-$at_dir}])
 
+dnl PCALC_FILTER_AT_CHECK([pcalc test script], [expected output])
+dnl
+dnl Run pcalc script, normalize the output, then compare it to expected output.
+dnl
+dnl $1: The pcalc test script under ptest/.
+dnl $2: Expected output (stdout).
 m4_define([PCALC_FILTER_AT_CHECK], [dnl
 AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/$1 | \
 	sed \
@@ -9,6 +17,11 @@ AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/$1 | \
 ], [0], [$2])
 ])
 
+dnl PCALC_SIMPLE_AT_CHECK([name], [expected output])
+dnl
+dnl Run a standard test setup with these files:
+dnl pcalc.<name>.at: Autotest file that runs this macro with expected output.
+dnl pcalc.<name>: The pcalc script to run.
 m4_define([PCALC_SIMPLE_AT_CHECK], [dnl
 AT_SETUP([pcalc.$1])
 PCALC_FILTER_AT_CHECK([pcalc.$1], [$2])
