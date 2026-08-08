@@ -38,7 +38,8 @@ void    print_num(long double var)
 
 {
     Symbol *msx  = lookup_sym("DEC");
-    
+    unsigned long long ullvar = var < 0 ? (long long)var : (unsigned long long)var;
+
     // compatibility variable:
 
     if(!msx)
@@ -50,24 +51,24 @@ void    print_num(long double var)
       }
     else if(msx && msx->u.val == 2)
       {
-	printf("%llx" , (unsigned long long)var);
+	printf("%llx" , ullvar);
       }
     else if(msx && msx->u.val == 3)
       {
-	long_to_bin_str((unsigned long long)var, work_str);
+	long_to_bin_str(ullvar, work_str);
 	printf("%s", work_str);
       }
     else if(msx && msx->u.val == 4)
       {
-	printf("%llo", (unsigned long long)var);
+	printf("%llo", ullvar);
       }
     else
       {
-	long_to_bin_str((unsigned long long)var, work_str);
+	long_to_bin_str(ullvar, work_str);
 	printf("\t%-16.*Lg", fPrecisionFpFrac, var);
 	if (fOctal)
-	  printf("\t0o%-16llo", (unsigned long long)var);
-	printf("\t0x%-16llx", (unsigned long long)var);
+	  printf("\t0o%-16llo", ullvar);
+	printf("\t0x%-16llx", ullvar);
 	printf("\t0y%s\n", work_str);
       }
 }
