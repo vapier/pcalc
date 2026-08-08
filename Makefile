@@ -11,7 +11,7 @@ YACC  = bison -ld
 LEX   = flex
 
 CFLAGS   ?= -ggdb
-CFLAGS   += -Wall
+CFLAGS   += -Wall -std=c17
 CPPFLAGS += -DVERSION='"$(VERSION)"' -D_POSIX_C_SOURCE=200809L
 LDLIBS   += -lm
 
