@@ -12,7 +12,7 @@ LEX   = flex
 
 CFLAGS   ?= -ggdb
 CFLAGS   += -Wall
-CPPFLAGS += -DVERSION='"$(VERSION)"'
+CPPFLAGS += -DVERSION='"$(VERSION)"' -D_POSIX_C_SOURCE=200809L
 LDLIBS   += -lm
 
 SRCS = pcalc pcalcl funct math symbol help store print str convert
