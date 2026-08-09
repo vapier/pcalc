@@ -1,4 +1,4 @@
-PCALC_SIMPLE_AT_CHECK([003], [dnl
+PCALC_SIMPLE_TEST([003], [dnl
 Variables:
  2 0x2 0y10
  1 0x1 0y1

@@ -1,4 +1,4 @@
-PCALC_SIMPLE_AT_CHECK([004], [dnl
+PCALC_SIMPLE_TEST([004], [dnl
  1 0x1 0y1
  2 0x2 0y10
  3 0x3 0y11

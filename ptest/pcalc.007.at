@@ -1,4 +1,4 @@
-PCALC_SIMPLE_AT_CHECK([007], [dnl
+PCALC_SIMPLE_TEST([007], [dnl
 
 hello world1
 hello world2

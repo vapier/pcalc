@@ -1,4 +1,4 @@
-PCALC_SIMPLE_AT_CHECK([008], [dnl
+PCALC_SIMPLE_TEST([008], [dnl
 
 Hello world1 with 2 newlines.
 

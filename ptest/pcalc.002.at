@@ -1,4 +1,4 @@
-PCALC_SIMPLE_AT_CHECK([002], [dnl
+PCALC_SIMPLE_TEST([002], [dnl
  10 0xa 0y1010
 Exponential:
  16 0x10 0y10000

@@ -17,12 +17,12 @@ AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/$1 | \
 ], [0], [$2])
 ])
 
-dnl PCALC_SIMPLE_AT_CHECK([name], [expected output])
+dnl PCALC_SIMPLE_TEST([name], [expected output])
 dnl
 dnl Run a standard test setup with these files:
 dnl pcalc.<name>.at: Autotest file that runs this macro with expected output.
 dnl pcalc.<name>: The pcalc script to run.
-m4_define([PCALC_SIMPLE_AT_CHECK], [dnl
+m4_define([PCALC_SIMPLE_TEST], [dnl
 AT_SETUP([pcalc.$1])
 PCALC_FILTER_AT_CHECK([pcalc.$1], [$2])
 AT_CLEANUP
