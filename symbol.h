@@ -13,7 +13,7 @@ typedef struct Symbol {    /* symbol table entry */
                int    ival;               /* if VAR */
                long long  lval;           /* if VAR */
                long double val;           /* if VAR */
-               long double (*ptr)();      /* if BUILTIN */
+               long double (*ptr)(long double);  /* if BUILTIN */
                int    (*iptr)();          /* if IBUILTIN */
          } u ;
   struct Symbol *next ;

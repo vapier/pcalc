@@ -33,7 +33,7 @@ static const CONSTS consts[] =
 typedef struct
         {
         const char *name;
-        long double (*func)();
+        long double (*func)(long double);
         }
         BUILTINS;
 
