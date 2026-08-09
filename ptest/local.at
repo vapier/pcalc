@@ -17,6 +17,26 @@ AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/$1 | \
 ], [0], [$2])
 ])
 
+dnl PCALC_REGEX_AT_CHECK([pcalc test script], [expected output])
+dnl
+dnl Run pcalc script, normalize the output, then compare it to expected output.
+dnl Output is a line-by-line regular expression.
+dnl
+dnl $1: The pcalc test script under ptest/.
+dnl $2: Expected output (stdout) regex.
+m4_define([PCALC_REGEX_AT_CHECK], [dnl
+AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/$1 | \
+	sed -E \
+		-e 's:@<:@	 @:>@+: :g' \
+		-e 's: +$::'
+], [0], [stdout-nolog])
+AT_DATA([expected], [$2])
+AT_FAIL_IF([dnl
+  awk -f PCALC_FILESDIR/check-output.awk stdout expected
+  test $? -ne 0
+])
+])
+
 dnl PCALC_SIMPLE_TEST([name], [expected output])
 dnl
 dnl Run a standard test setup with these files:
@@ -25,5 +45,15 @@ dnl pcalc.<name>: The pcalc script to run.
 m4_define([PCALC_SIMPLE_TEST], [dnl
 AT_SETUP([pcalc.$1])
 PCALC_FILTER_AT_CHECK([pcalc.$1], [$2])
+AT_CLEANUP
+])
+
+dnl PCALC_REGEX_TEST([name], [expected output])
+dnl
+dnl Same as PCALC_SIMPLE_TEST, except expected output is a line-by-line regular
+dnl expression.
+m4_define([PCALC_REGEX_TEST], [dnl
+AT_SETUP([pcalc.$1])
+PCALC_REGEX_AT_CHECK([pcalc.$1], [$2])
 AT_CLEANUP
 ])
