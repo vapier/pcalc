@@ -1,4 +1,4 @@
-PCALC_SIMPLE_TEST([001], [dnl
+PCALC_REGEX_TEST([001], [dnl
 SIN:
  0.5403023058681397 0x0 0y0
  0.5403023058681397 0x0 0y0
@@ -16,7 +16,12 @@ Log 'E'
 LOG:
  2.302585092994046 0x2 0y10
  0.4342944819032518 0x0 0y0
- 1 0x1 0y1
+dnl The floating point operations produce a number that is very close to 1.
+dnl Many implementations (e.g. x86) yield a fp number slightly larger than 1
+dnl which truncates to an int 1.  But some (e.g. aarch64) yield a fp number
+dnl slightly smaller than 1 which truncates to an int 0.  Neither is wrong,
+dnl so accept both.
+ 1 0x[[01]] 0y[[01]]
 Fahrenheit to celsius: 80F
  26.66666666666667 0x1a 0y11010
 ])
