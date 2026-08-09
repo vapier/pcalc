@@ -27,6 +27,22 @@ $ ./testsuite 1
 
 Then review the test output in `testsuite.dir/01/testsuite.log`.
 
+## Floating Point
+
+Since IEEE floating point numbers, by design, are not exact, and implementations
+are allowed to have different levels of accuracy, trying to test their output
+exactly is likely to run into issues.
+
+For example, `sin(PI / 2 + 1)` might be `0.5403023058681398` or
+`0.5403023058681397`, and both are valid answers.
+
+As such, when matching floating point numbers in output, only bother validating
+the first 10 or so digits after the decimal point, and match the rest with a
+regular expression like `[0-9]+`.
+
+Not all tests in here follow that rule, more so the ones where people have
+reported mismatches in the real world.
+
 ## File Structure
 
 * `local.at`: Helper macros used by individual tests.

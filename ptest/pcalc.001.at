@@ -1,13 +1,17 @@
 PCALC_REGEX_TEST([001], [dnl
 SIN:
- 0.5403023058681397 0x0 0y0
- 0.5403023058681397 0x0 0y0
+ 0.5403023058681[[0-9]]+ 0x0 0y0
+ 0.5403023058681[[0-9]]+ 0x0 0y0
+dnl This is cos(PI/2) which should be 0.  Floating point will likely yield a
+dnl very very small number rather than 0, so accept anything with scientific
+dnl notation as that'll be quite tiny.
+ [[-0-9]]+[[.]][[0-9]]+e-[[0-9]]+ 0x0 0y0
 PI/2
  1.570796326794897 0x1 0y1
 Undefined:
  0 0x0 0y0
 Exponential:
- 0.2919265817264288 0x0 0y0
+ 0.2919265817264[[0-9]]+ 0x0 0y0
 Constant:
  2.718281828459045 0x2 0y10
  3.141592653589793 0x3 0y11

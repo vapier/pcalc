@@ -18,7 +18,9 @@ x = PI/2
 x
 
 a = sin(x)
+b = cos(x)
 a
+b
 
 a = 2
 b = 2
