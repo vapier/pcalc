@@ -11,9 +11,9 @@ dnl $1: The pcalc test script under ptest/.
 dnl $2: Expected output (stdout).
 m4_define([PCALC_FILTER_AT_CHECK], [dnl
 AT_CHECK([PCALC_BINARY @PCALC_FILESDIR/$1 | \
-	sed \
-		-e 's:@<:@	 @:>@@<:@	 @:>@*: :g' \
-		-e 's: *$::'
+	sed -E \
+		-e 's:@<:@	 @:>@+: :g' \
+		-e 's: +$::'
 ], [0], [$2])
 ])
 
